@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Aid — Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   BRAND AID — ADMIN DASHBOARD
+   Palette: Turquoise #447F98 | Slate #629BB6
+            Platinum #DADEE1  | Glacier #B9D8E1
+            Ice Blue #D6EBF3
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --T:      #447F98;
+  --S:      #629BB6;
+  --P:      #DADEE1;
+  --G:      #B9D8E1;
+  --I:      #D6EBF3;
+  --dark:   #070d12;
+  --d2:     #0b1520;
+  --d3:     #101e2a;
+  --d4:     #0d1926;
+  --card:   rgba(11,21,32,0.95);
+  --border: rgba(68,127,152,0.28);
+  --text:   #b8cedd;
+  --white:  #eef5fb;
+  --red:    #e05555;
+  --green:  #3db87a;
+  --yellow: #d4af37;
+  --sidebar-w: 240px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:var(--d2); }
+::-webkit-scrollbar-thumb { background:var(--T); border-radius:2px; }
+
+/* ─────────────────────────────
+   LOGIN SCREEN
+───────────────────────────── */
+#login-screen {
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 20%, rgba(68,127,152,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 80% 80%, rgba(98,155,182,.10) 0%, transparent 55%),
+    var(--dark);
+}
+.login-box {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:3rem 2.5rem;
+  width:100%; max-width:400px;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.login-box::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--T), var(--G), var(--T));
+}
+.login-logo {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem; letter-spacing:4px; color:var(--white);
+  margin-bottom:.3rem;
+}
+.login-logo span { color:var(--T); }
+.login-sub { font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--S); margin-bottom:2rem; }
+.login-field { display:flex; flex-direction:column; gap:.35rem; margin-bottom:1rem; text-align:left; }
+.login-field label { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--T); }
+.login-input {
+  background:rgba(7,13,18,.8); border:1px solid var(--border);
+  color:var(--white); padding:.75rem 1rem; border-radius:3px;
+  font-family:'DM Sans',sans-serif; font-size:.9rem; transition:border-color .3s;
+}
+.login-input:focus { outline:none; border-color:var(--T); }
+.login-input::placeholder { color:rgba(98,155,182,.4); }
+.login-btn {
+  width:100%; padding:.85rem; margin-top:.5rem;
+  background:var(--T); color:var(--dark);
+  border:none; border-radius:3px; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-weight:700;
+  font-size:.82rem; letter-spacing:2px; text-transform:uppercase;
+  transition:all .3s; position:relative; overflow:hidden;
+}
+.login-btn:hover { background:var(--G); transform:translateY(-1px); }
+.login-err {
+  color:var(--red); font-size:.8rem; margin-top:.5rem;
+  display:none;
+}
+.login-err.show { display:block; }
+.login-hint { font-size:.72rem; color:rgba(98,155,182,.5); margin-top:1.2rem; }
+
+/* ─────────────────────────────
+   LAYOUT: SIDEBAR + MAIN
+───────────────────────────── */
+#app { display:none; }
+#app.active { display:flex; min-height:100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width:var(--sidebar-w); flex-shrink:0;
+  background:var(--d2);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column;
+  position:fixed; top:0; left:0; bottom:0; z-index:100;
+  transition:transform .3s;
+}
+.sb-logo {
+  padding:1.4rem 1.6rem;
+  border-bottom:1px solid var(--border);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem; letter-spacing:3px; color:var(--white);
+  text-decoration:none; display:block;
+}
+.sb-logo span { color:var(--T); }
+.sb-role {
+  font-family:'DM Sans',sans-serif;
+  font-size:.6rem; letter-spacing:2px; text-transform:uppercase;
+  color:var(--S); display:block; margin-top:.15rem;
+}
+
+.sb-nav { flex:1; overflow-y:auto; padding:.8rem 0; }
+.sb-section {
+  font-size:.58rem; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(98,155,182,.45); padding:.6rem 1.6rem .3rem;
+}
+.sb-link {
+  display:flex; align-items:center; gap:.75rem;
+  padding:.65rem 1.6rem; text-decoration:none;
+  color:var(--text); font-size:.82rem; font-weight:500;
+  transition:all .2s; cursor:pointer; border:none;
+  background:transparent; width:100%; text-align:left;
+  position:relative;
+}
+.sb-link:hover { background:rgba(68,127,152,.1); color:var(--G); }
+.sb-link.active {
+  background:rgba(68,127,152,.15); color:var(--white);
+  border-right:3px solid var(--T);
+}
+.sb-link .ico { font-size:1rem; width:20px; text-align:center; }
+.sb-badge {
+  margin-left:auto; background:var(--T); color:var(--dark);
+  font-size:.6rem; font-weight:700; padding:.15rem .5rem;
+  border-radius:50px; min-width:20px; text-align:center;
+}
+.sb-badge.red { background:var(--red); color:#fff; }
+
+.sb-footer {
+  padding:1rem 1.6rem;
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; gap:.8rem;
+}
+.sb-avatar {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg,var(--T),var(--S));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; flex-shrink:0;
+}
+.sb-user-name { font-size:.82rem; font-weight:600; color:var(--white); }
+.sb-user-role { font-size:.65rem; color:var(--S); }
+.sb-logout {
+  margin-left:auto; background:transparent; border:none;
+  color:var(--S); cursor:pointer; font-size:1rem; padding:.3rem;
+  transition:color .2s;
+}
+.sb-logout:hover { color:var(--red); }
+
+/* ── MAIN CONTENT ── */
+.main {
+  margin-left:var(--sidebar-w);
+  flex:1; display:flex; flex-direction:column; min-height:100vh;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position:sticky; top:0; z-index:50;
+  height:58px; padding:0 2rem;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(7,13,18,.85); backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem; letter-spacing:2px; color:var(--white);
+}
+.topbar-right { display:flex; align-items:center; gap:1rem; }
+.tb-btn {
+  background:transparent; border:1px solid var(--border);
+  color:var(--G); padding:.38rem .9rem; border-radius:3px;
+  font-family:'DM Sans',sans-serif; font-size:.74rem; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .3s;
+  display:flex; align-items:center; gap:.4rem;
+}
+.tb-btn:hover { border-color:var(--T); color:var(--white); }
+.tb-btn.primary { background:var(--T); color:var(--dark); border-color:var(--T); }
+.tb-btn.primary:hover { background:var(--G); }
+.tb-time { font-size:.75rem; color:var(--S); }
+.ham-mob {
+  display:none; background:transparent; border:none;
+  color:var(--white); cursor:pointer; font-size:1.3rem;
+}
+
+/* ── CONTENT AREA ── */
+.content { padding:2rem; flex:1; }
+
+/* ── PANELS (pages) ── */
+.panel { display:none; }
+.panel.active { display:block; }
+
+/* ─────────────────────────────
+   SHARED COMPONENTS
+───────────────────────────── */
+.page-header { margin-bottom:2rem; }
+.page-header h1 {
+  font-family:'Bebas Neue',sans-serif; font-size:2.2rem;
+  color:var(--white); letter-spacing:2px; line-height:1;
+}
+.page-header p { font-size:.85rem; color:var(--S); margin-top:.4rem; }
+
+/* Cards row */
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; margin-bottom:2rem; }
+.stat-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:5px; padding:1.4rem; position:relative; overflow:hidden;
+  transition:border-color .3s;
+}
+.stat-card:hover { border-color:rgba(68,127,152,.5); }
+.stat-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+}
+.stat-card.turq::before { background:linear-gradient(90deg,var(--T),var(--G)); }
+.stat-card.gold::before { background:linear-gradient(90deg,#d4af37,#f0d060); }
+.stat-card.red::before  { background:linear-gradient(90deg,var(--red),#f08080); }
+.stat-card.green::before{ background:linear-gradient(90deg,var(--green),#60c8a0); }
+
+.stat-label { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--S); margin-bottom:.5rem; }
+.stat-value { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:var(--white); line-height:1; }
+.stat-sub { font-size:.75rem; color:var(--S); margin-top:.4rem; }
+.stat-icon { position:absolute; right:1.2rem; top:1.2rem; font-size:1.8rem; opacity:.3; }
+.stat-trend { font-size:.72rem; margin-top:.4rem; }
+.stat-trend.up { color:var(--green); }
+.stat-trend.dn { color:var(--red); }
+
+/* Grid 2 col */
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-bottom:1.2rem; }
+
+/* Card panel */
+.card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:5px; padding:1.5rem;
+}
+.card-header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:1.2rem; padding-bottom:.8rem;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.card-title {
+  font-family:'Syne',sans-serif; font-weight:700;
+  color:var(--white); font-size:.95rem;
+}
+.card-action {
+  background:transparent; border:1px solid var(--border);
+  color:var(--S); font-size:.68rem; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase; padding:.3rem .8rem;
+  border-radius:3px; cursor:pointer; transition:all .2s;
+}
+.card-action:hover { border-color:var(--T); color:var(--G); }
+
+/* Table */
+.tbl { width:100%; border-collapse:collapse; }
+.tbl th {
+  font-size:.62rem; letter-spacing:2px; text-transform:uppercase;
+  color:var(--T); padding:.7rem .9rem; text-align:left;
+  border-bottom:1px solid var(--border);
+}
+.tbl td { padding:.75rem .9rem; border-bottom:1px solid rgba(255,255,255,.03); font-size:.83rem; }
+.tbl tr:hover td { background:rgba(68,127,152,.05); }
+.tbl tr:last-child td { border-bottom:none; }
+
+/* Badges */
+.badge {
+  display:inline-block; font-size:.6rem; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  padding:.2rem .65rem; border-radius:50px;
+}
+.badge-green  { background:rgba(61,184,122,.15); color:var(--green); border:1px solid rgba(61,184,122,.3); }
+.badge-yellow { background:rgba(212,175,55,.15);  color:var(--yellow); border:1px solid rgba(212,175,55,.3); }
+.badge-red    { background:rgba(224,85,85,.15);   color:var(--red);    border:1px solid rgba(224,85,85,.3); }
+.badge-blue   { background:rgba(68,127,152,.15);  color:var(--G);      border:1px solid rgba(68,127,152,.3); }
+
+/* Buttons */
+.btn-sm {
+  background:transparent; border:1px solid var(--border); color:var(--S);
+  padding:.28rem .7rem; border-radius:3px; font-size:.7rem; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .2s;
+}
+.btn-sm:hover { border-color:var(--T); color:var(--G); }
+.btn-sm.danger:hover { border-color:var(--red); color:var(--red); }
+.btn-sm.success { background:rgba(61,184,122,.1); border-color:rgba(61,184,122,.3); color:var(--green); }
+.btn-sm.primary { background:var(--T); border-color:var(--T); color:var(--dark); }
+
+/* Form inputs */
+.f-group { display:flex; flex-direction:column; gap:.35rem; margin-bottom:1rem; }
+.f-label { font-size:.63rem; letter-spacing:2px; text-transform:uppercase; color:var(--T); }
+.f-input {
+  background:rgba(7,13,18,.8); border:1px solid var(--border);
+  color:var(--white); padding:.65rem .9rem; border-radius:3px;
+  font-family:'DM Sans',sans-serif; font-size:.87rem; transition:border-color .3s; width:100%;
+}
+.f-input:focus { outline:none; border-color:var(--T); }
+.f-input::placeholder { color:rgba(98,155,182,.4); }
+select.f-input option { background:var(--d2); }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.f-row.cols3 { grid-template-columns:1fr 1fr 1fr; }
+
+/* Progress bar */
+.prog-bar { height:5px; background:rgba(68,127,152,.18); border-radius:3px; margin-top:.5rem; }
+.prog-fill { height:100%; background:linear-gradient(90deg,var(--T),var(--G)); border-radius:3px; transition:width .6s; }
+
+/* Activity feed */
+.activity-item {
+  display:flex; gap:.9rem; align-items:flex-start;
+  padding:.75rem 0; border-bottom:1px solid rgba(255,255,255,.04);
+}
+.activity-item:last-child { border-bottom:none; }
+.act-dot {
+  width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px;
+}
+.act-dot.green  { background:var(--green); box-shadow:0 0 6px rgba(61,184,122,.5); }
+.act-dot.yellow { background:var(--yellow); }
+.act-dot.red    { background:var(--red); }
+.act-dot.blue   { background:var(--T); }
+.act-text { font-size:.82rem; color:var(--text); line-height:1.5; }
+.act-time { font-size:.7rem; color:var(--S); margin-top:.2rem; }
+
+/* Score input row */
+.score-row {
+  display:flex; align-items:center; gap:.8rem;
+  padding:.7rem 0; border-bottom:1px solid rgba(255,255,255,.04);
+}
+.score-row:last-child { border-bottom:none; }
+.score-team { flex:1; font-size:.84rem; font-weight:600; color:var(--white); }
+.score-inp {
+  width:60px; background:rgba(7,13,18,.8); border:1px solid var(--border);
+  color:var(--white); padding:.35rem .5rem; border-radius:3px;
+  font-family:'DM Sans',sans-serif; font-size:.84rem; text-align:center;
+  transition:border-color .2s;
+}
+.score-inp:focus { outline:none; border-color:var(--T); }
+
+/* Chart bars (CSS only) */
+.chart-bar-row { display:flex; flex-direction:column; gap:.9rem; }
+.chart-bar-item { }
+.chart-bar-label { display:flex; justify-content:space-between; font-size:.75rem; color:var(--text); margin-bottom:.35rem; }
+.chart-bar-label span { color:var(--S); }
+
+/* Toast */
+.toast {
+  position:fixed; bottom:2rem; right:2rem; z-index:9999;
+  background:var(--T); color:var(--dark);
+  padding:.75rem 1.4rem; border-radius:4px;
+  font-weight:700; font-size:.82rem;
+  transform:translateY(80px); opacity:0;
+  transition:all .35s; pointer-events:none; max-width:320px;
+}
+.toast.show { transform:translateY(0); opacity:1; }
+
+/* Modal */
+.modal-overlay {
+  position:fixed; inset:0; z-index:800;
+  background:rgba(7,13,18,.85); backdrop-filter:blur(6px);
+  display:none; align-items:center; justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--d2); border:1px solid var(--border);
+  border-radius:6px; padding:2rem; width:100%; max-width:520px;
+  position:relative;
+}
+.modal h3 { font-family:'Syne',sans-serif; font-weight:800; color:var(--white); margin-bottom:1.2rem; }
+.modal-close {
+  position:absolute; top:1rem; right:1rem;
+  background:transparent; border:none; color:var(--S);
+  font-size:1.3rem; cursor:pointer; transition:color .2s;
+}
+.modal-close:hover { color:var(--red); }
+
+/* Toggle switch */
+.toggle-row { display:flex; align-items:center; justify-content:space-between; padding:.7rem 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.toggle-row:last-child { border-bottom:none; }
+.toggle-info h4 { font-size:.84rem; font-weight:600; color:var(--white); }
+.toggle-info p  { font-size:.74rem; color:var(--S); margin-top:.15rem; }
+.toggle { position:relative; width:44px; height:24px; }
+.toggle input { opacity:0; width:0; height:0; }
+.toggle-slider {
+  position:absolute; inset:0; border-radius:12px;
+  background:rgba(68,127,152,.2); border:1px solid var(--border);
+  cursor:pointer; transition:.3s;
+}
+.toggle-slider::before {
+  content:''; position:absolute; left:3px; top:50%;
+  transform:translateY(-50%);
+  width:16px; height:16px; border-radius:50%;
+  background:var(--S); transition:.3s;
+}
+.toggle input:checked + .toggle-slider { background:var(--T); border-color:var(--T); }
+.toggle input:checked + .toggle-slider::before { transform:translateY(-50%) translateX(20px); background:var(--dark); }
+
+/* Countdown display */
+.cd-admin { display:flex; gap:.7rem; }
+.cd-box-a {
+  background:rgba(68,127,152,.1); border:1px solid var(--border);
+  border-radius:4px; padding:.5rem .9rem; text-align:center; min-width:58px;
+}
+.cd-num-a { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--white); line-height:1; }
+.cd-lbl-a { font-size:.52rem; text-transform:uppercase; letter-spacing:2px; color:var(--S); }
+
+/* Voting donut (CSS) */
+.vote-visual { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.vote-item { flex:1; min-width:130px; }
+.vote-team-name { font-size:.8rem; font-weight:600; color:var(--white); margin-bottom:.4rem; }
+.vote-count-num { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:var(--T); }
+
+/* Announcement composer */
+.ann-preview {
+  background:rgba(7,13,18,.6); border:1px solid var(--border);
+  border-radius:4px; padding:1rem; margin-top:.8rem;
+  font-size:.84rem; color:var(--text); min-height:60px;
+  line-height:1.6;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar { transform:translateX(-100%); }
+  .sidebar.open { transform:translateX(0); }
+  .main { margin-left:0; }
+  .ham-mob { display:block; }
+  .grid2,.grid3 { grid-template-columns:1fr; }
+  .f-row { grid-template-columns:1fr; }
+  .f-row.cols3 { grid-template-columns:1fr; }
+  .stat-row { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px){
+  .stat-row { grid-template-columns:1fr; }
+  .content { padding:1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════
+     LOGIN SCREEN
+═══════════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">BRAND<span>AID</span></div>
+    <div class="login-sub">Admin Control Panel</div>
+    <div class="login-field">
+      <label>Username</label>
+      <input class="login-input" type="text" id="login-user" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input class="login-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In to Dashboard</button>
+    <div class="login-err" id="login-err">Invalid username or password.</div>
+    <div class="login-hint">Default: admin / brandaid2025</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     MAIN APP
+═══════════════════════════ -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="sb-logo">BRAND<span>AID</span><span class="sb-role">Admin Panel</span></a>
+
+    <nav class="sb-nav">
+      <div class="sb-section">Overview</div>
+      <button class="sb-link active" onclick="goPanel('dashboard',this)">
+        <span class="ico">📊</span> Dashboard
+      </button>
+
+      <div class="sb-section">Event Management</div>
+      <button class="sb-link" onclick="goPanel('registrations',this)">
+        <span class="ico">📝</span> Registrations
+        <span class="sb-badge" id="reg-badge">12</span>
+      </button>
+      <button class="sb-link" onclick="goPanel('submissions',this)">
+        <span class="ico">📤</span> Submissions
+        <span class="sb-badge red" id="sub-badge">5</span>
+      </button>
+      <button class="sb-link" onclick="goPanel('leaderboard',this)">
+        <span class="ico">🏆</span> Leaderboard
+      </button>
+      <button class="sb-link" onclick="goPanel('voting',this)">
+        <span class="ico">🗳</span> Voting
+      </button>
+      <button class="sb-link" onclick="goPanel('judges',this)">
+        <span class="ico">👨‍⚖️</span> Judges
+      </button>
+
+      <div class="sb-section">Content</div>
+      <button class="sb-link" onclick="goPanel('content',this)">
+        <span class="ico">📰</span> Blog / Content
+      </button>
+      <button class="sb-link" onclick="goPanel('sponsors',this)">
+        <span class="ico">🤝</span> Sponsors
+      </button>
+      <button class="sb-link" onclick="goPanel('winners',this)">
+        <span class="ico">🥇</span> Winners
+      </button>
+      <button class="sb-link" onclick="goPanel('announcements',this)">
+        <span class="ico">📣</span> Announcements
+      </button>
+
+      <div class="sb-section">Communication</div>
+      <button class="sb-link" onclick="goPanel('messages',this)">
+        <span class="ico">✉️</span> Messages
+        <span class="sb-badge red" id="msg-badge">3</span>
+      </button>
+
+      <div class="sb-section">System</div>
+      <button class="sb-link" onclick="goPanel('settings',this)">
+        <span class="ico">⚙️</span> Settings
+      </button>
+      <button class="sb-link" onclick="goPanel('eventconfig',this)">
+        <span class="ico">🎯</span> Event Config
+      </button>
+    </nav>
+
+    <div class="sb-footer">
+      <div class="sb-avatar">👤</div>
+      <div>
+        <div class="sb-user-name">Admin</div>
+        <div class="sb-user-role">Super Admin</div>
+      </div>
+      <button class="sb-logout" onclick="doLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <button class="ham-mob" onclick="toggleSidebar()">☰</button>
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <div class="tb-time" id="tb-clock"></div>
+        <a href="../index.html" target="_blank" class="tb-btn">🌐 View Site</a>
+        <button class="tb-btn primary" onclick="showToast('💾 All changes saved!')">💾 Save Changes</button>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- ══════════════════════════
+           PANEL: DASHBOARD
+      ══════════════════════════ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="page-header">
+          <h1>DASHBOARD</h1>
+          <p>Welcome back, Admin. Here's what's happening with Brand Aid today.</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stat-row">
+          <div class="stat-card turq">
+            <div class="stat-icon">📝</div>
+            <div class="stat-label">Total Registrations</div>
+            <div class="stat-value">47</div>
+            <div class="stat-sub">Teams registered</div>
+            <div class="stat-trend up">↑ +8 this week</div>
+          </div>
+          <div class="stat-card gold">
+            <div class="stat-icon">📤</div>
+            <div class="stat-label">Submissions</div>
+            <div class="stat-value">31</div>
+            <div class="stat-sub">Ads submitted</div>
+            <div class="stat-trend up">↑ +5 today</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-icon">🗳</div>
+            <div class="stat-label">Total Votes</div>
+            <div class="stat-value">312</div>
+            <div class="stat-sub">People's choice votes</div>
+            <div class="stat-trend up">↑ +42 today</div>
+          </div>
+          <div class="stat-card red">
+            <div class="stat-icon">✉️</div>
+            <div class="stat-label">Messages</div>
+            <div class="stat-value">3</div>
+            <div class="stat-sub">Unread messages</div>
+            <div class="stat-trend dn">Needs attention</div>
+          </div>
+        </div>
+
+        <!-- Countdown + Quick Actions -->
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">⏱ Event Countdown</div>
+              <span class="badge badge-green">Live</span>
+            </div>
+            <p style="font-size:.78rem;color:var(--S);margin-bottom:1rem">April 18, 2026 · 09:00 AM · Main Auditorium</p>
+            <div class="cd-admin">
+              <div class="cd-box-a"><div class="cd-num-a" id="a-d">00</div><div class="cd-lbl-a">Days</div></div>
+              <div class="cd-box-a"><div class="cd-num-a" id="a-h">00</div><div class="cd-lbl-a">Hours</div></div>
+              <div class="cd-box-a"><div class="cd-num-a" id="a-m">00</div><div class="cd-lbl-a">Mins</div></div>
+              <div class="cd-box-a"><div class="cd-num-a" id="a-s">00</div><div class="cd-lbl-a">Secs</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">⚡ Quick Actions</div></div>
+            <div style="display:flex;flex-direction:column;gap:.6rem">
+              <button class="tb-btn" onclick="goPanel('leaderboard',null);showToast('Opening Leaderboard...')" style="justify-content:flex-start">🏆 Update Leaderboard Scores</button>
+              <button class="tb-btn" onclick="goPanel('announcements',null);showToast('Opening Announcements...')" style="justify-content:flex-start">📣 Post Announcement</button>
+              <button class="tb-btn" onclick="goPanel('submissions',null)" style="justify-content:flex-start">📤 Review Pending Submissions</button>
+              <button class="tb-btn primary" onclick="openModal('export-modal')" style="justify-content:flex-start">📥 Export All Data</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity + Registrations -->
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🕐 Recent Activity</div>
+              <button class="card-action">Clear All</button>
+            </div>
+            <div class="activity-item"><div class="act-dot green"></div><div><div class="act-text">New team <b style="color:var(--white)">The Brand Hunters</b> registered</div><div class="act-time">2 minutes ago</div></div></div>
+            <div class="activity-item"><div class="act-dot blue"></div><div><div class="act-text">Ad submission received from <b style="color:var(--white)">Pixel Pitch Co.</b></div><div class="act-time">15 minutes ago</div></div></div>
+            <div class="activity-item"><div class="act-dot yellow"></div><div><div class="act-text">38 votes cast in People's Choice Award</div><div class="act-time">1 hour ago</div></div></div>
+            <div class="activity-item"><div class="act-dot red"></div><div><div class="act-text">New contact message from <b style="color:var(--white)">Rahul Verma</b></div><div class="act-time">2 hours ago</div></div></div>
+            <div class="activity-item"><div class="act-dot green"></div><div><div class="act-text">Leaderboard scores updated for Round 2</div><div class="act-time">3 hours ago</div></div></div>
+            <div class="activity-item"><div class="act-dot blue"></div><div><div class="act-text">Blog post published: <i>Top 5 Branding Strategies</i></div><div class="act-time">Yesterday</div></div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📊 Round Progress</div>
+              <span class="badge badge-yellow">Round 2</span>
+            </div>
+            <div class="chart-bar-row">
+              <div class="chart-bar-item">
+                <div class="chart-bar-label">Round 1 — Product Reveal <span>47/47 teams</span></div>
+                <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+              </div>
+              <div class="chart-bar-item">
+                <div class="chart-bar-label">Round 2 — Creative Ad <span>31/47 teams</span></div>
+                <div class="prog-bar"><div class="prog-fill" style="width:66%"></div></div>
+              </div>
+              <div class="chart-bar-item">
+                <div class="chart-bar-label">Round 3 — Strategy <span>0/20 teams</span></div>
+                <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
+              </div>
+              <div class="chart-bar-item">
+                <div class="chart-bar-label">Grand Final <span>Not started</span></div>
+                <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
+              </div>
+            </div>
+            <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.05)">
+              <div class="chart-bar-label" style="margin-bottom:.6rem">Registrations by College <span>47 total</span></div>
+              <div class="chart-bar-item" style="margin-bottom:.6rem"><div class="chart-bar-label">DBS College <span>18</span></div><div class="prog-bar"><div class="prog-fill" style="width:38%"></div></div></div>
+              <div class="chart-bar-item" style="margin-bottom:.6rem"><div class="chart-bar-label">IMS Dehradun <span>14</span></div><div class="prog-bar"><div class="prog-fill" style="width:30%"></div></div></div>
+              <div class="chart-bar-item"><div class="chart-bar-label">Others <span>15</span></div><div class="prog-bar"><div class="prog-fill" style="width:32%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: REGISTRATIONS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-registrations">
+        <div class="page-header">
+          <h1>REGISTRATIONS</h1>
+          <p>Manage all team registrations. Approve, reject or export entries.</p>
+        </div>
+
+        <div class="stat-row" style="grid-template-columns:repeat(4,1fr)">
+          <div class="stat-card turq"><div class="stat-label">Total Teams</div><div class="stat-value">47</div></div>
+          <div class="stat-card green"><div class="stat-label">Confirmed</div><div class="stat-value">39</div></div>
+          <div class="stat-card gold"><div class="stat-label">Pending</div><div class="stat-value">6</div></div>
+          <div class="stat-card red"><div class="stat-label">Rejected</div><div class="stat-value">2</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">All Registrations</div>
+            <div style="display:flex;gap:.6rem">
+              <select class="f-input" style="width:auto;padding:.3rem .7rem;font-size:.75rem">
+                <option>All Status</option>
+                <option>Confirmed</option>
+                <option>Pending</option>
+                <option>Rejected</option>
+              </select>
+              <button class="card-action" onclick="showToast('📥 Exporting CSV...')">Export CSV</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="tbl">
+              <thead><tr><th>#</th><th>Team Name</th><th>College</th><th>Members</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="reg-table-body">
+                <tr><td>1</td><td style="color:var(--white);font-weight:600">The Brand Hunters</td><td>DBS College</td><td>4</td><td>brandh@dbs.edu</td><td><span class="badge badge-green">Confirmed</span></td><td><button class="btn-sm" onclick="openModal('view-team-modal')">View</button> <button class="btn-sm danger" onclick="showToast('⚠ Team rejected.')">Reject</button></td></tr>
+                <tr><td>2</td><td style="color:var(--white);font-weight:600">Pixel Pitch Co.</td><td>IMS Dehradun</td><td>3</td><td>pixelpitch@ims.in</td><td><span class="badge badge-green">Confirmed</span></td><td><button class="btn-sm">View</button> <button class="btn-sm danger" onclick="showToast('⚠ Team rejected.')">Reject</button></td></tr>
+                <tr><td>3</td><td style="color:var(--white);font-weight:600">Ad Alchemists</td><td>DBS College</td><td>4</td><td>adalchemy@dbs.edu</td><td><span class="badge badge-green">Confirmed</span></td><td><button class="btn-sm">View</button> <button class="btn-sm danger" onclick="showToast('⚠ Team rejected.')">Reject</button></td></tr>
+                <tr><td>4</td><td style="color:var(--white);font-weight:600">MarketMind Squad</td><td>UPES</td><td>2</td><td>mms@upes.ac.in</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm success" onclick="showToast('✅ Team confirmed!')">Confirm</button> <button class="btn-sm danger" onclick="showToast('⚠ Team rejected.')">Reject</button></td></tr>
+                <tr><td>5</td><td style="color:var(--white);font-weight:600">Creative Catalyst</td><td>Graphic Era</td><td>3</td><td>cc@graphicera.edu</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm success" onclick="showToast('✅ Team confirmed!')">Confirm</button> <button class="btn-sm danger" onclick="showToast('⚠ Team rejected.')">Reject</button></td></tr>
+                <tr><td>6</td><td style="color:var(--white);font-weight:600">BrandBusters</td><td>HNBGU</td><td>4</td><td>bb@hnbgu.ac.in</td><td><span class="badge badge-red">Rejected</span></td><td><button class="btn-sm" onclick="showToast('✅ Team reinstated!')">Reinstate</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: SUBMISSIONS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-submissions">
+        <div class="page-header">
+          <h1>SUBMISSIONS</h1>
+          <p>Review and manage all creative ad submissions from teams.</p>
+        </div>
+
+        <div class="stat-row" style="grid-template-columns:repeat(4,1fr)">
+          <div class="stat-card turq"><div class="stat-label">Total Submitted</div><div class="stat-value">31</div></div>
+          <div class="stat-card gold"><div class="stat-label">Pending Review</div><div class="stat-value">5</div></div>
+          <div class="stat-card green"><div class="stat-label">Approved</div><div class="stat-value">24</div></div>
+          <div class="stat-card red"><div class="stat-label">Flagged</div><div class="stat-value">2</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">All Submissions</div>
+            <div style="display:flex;gap:.6rem">
+              <select class="f-input" style="width:auto;padding:.3rem .7rem;font-size:.75rem">
+                <option>All Types</option><option>Poster</option><option>Video Ad</option><option>Marketing Plan</option><option>Slogan</option>
+              </select>
+              <button class="card-action" onclick="showToast('📥 Downloading all...')">Download All</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="tbl">
+              <thead><tr><th>#</th><th>Team</th><th>Type</th><th>Slogan</th><th>Submitted</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td style="color:var(--white);font-weight:600">The Brand Hunters</td><td><span class="badge badge-blue">Poster</span></td><td>"Fuel Your Day, The Smart Way!"</td><td>Today 9:14 AM</td><td><span class="badge badge-green">Approved</span></td><td><button class="btn-sm">Preview</button> <button class="btn-sm danger" onclick="showToast('🚩 Submission flagged.')">Flag</button></td></tr>
+                <tr><td>2</td><td style="color:var(--white);font-weight:600">Pixel Pitch Co.</td><td><span class="badge badge-blue">Video Ad</span></td><td>"See the Future, Wear It Today."</td><td>Today 10:02 AM</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm success" onclick="showToast('✅ Submission approved!')">Approve</button> <button class="btn-sm danger" onclick="showToast('🚩 Flagged.')">Flag</button></td></tr>
+                <tr><td>3</td><td style="color:var(--white);font-weight:600">Ad Alchemists</td><td><span class="badge badge-blue">Slogan</span></td><td>"Bold by Design. Fearless by Choice."</td><td>Today 11:30 AM</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm success" onclick="showToast('✅ Submission approved!')">Approve</button> <button class="btn-sm danger" onclick="showToast('🚩 Flagged.')">Flag</button></td></tr>
+                <tr><td>4</td><td style="color:var(--white);font-weight:600">MarketMind Squad</td><td><span class="badge badge-blue">Plan</span></td><td>N/A</td><td>Yesterday</td><td><span class="badge badge-red">Flagged</span></td><td><button class="btn-sm success" onclick="showToast('✅ Flag removed.')">Clear</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: LEADERBOARD
+      ══════════════════════════ -->
+      <div class="panel" id="panel-leaderboard">
+        <div class="page-header">
+          <h1>LEADERBOARD</h1>
+          <p>Update and manage round scores. Changes reflect live on the website.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Update Scores</div>
+              <select class="f-input" id="round-select" style="width:auto;padding:.3rem .7rem;font-size:.75rem" onchange="showToast('Editing Round '+this.value+' scores')">
+                <option value="1">Round 1</option>
+                <option value="2" selected>Round 2</option>
+                <option value="3">Round 3</option>
+              </select>
+            </div>
+            <div id="score-editor">
+              <div class="score-row"><div class="score-team">🥇 The Brand Hunters</div><input class="score-inp" value="31" oninput="recalcTotal(this,0)"><span style="font-size:.72rem;color:var(--S);margin-left:.3rem">/40</span></div>
+              <div class="score-row"><div class="score-team">🥈 Pixel Pitch Co.</div><input class="score-inp" value="28" oninput="recalcTotal(this,1)"><span style="font-size:.72rem;color:var(--S);margin-left:.3rem">/40</span></div>
+              <div class="score-row"><div class="score-team">🥉 Ad Alchemists</div><input class="score-inp" value="27" oninput="recalcTotal(this,2)"><span style="font-size:.72rem;color:var(--S);margin-left:.3rem">/40</span></div>
+              <div class="score-row"><div class="score-team">4. MarketMind Squad</div><input class="score-inp" value="26" oninput="recalcTotal(this,3)"><span style="font-size:.72rem;color:var(--S);margin-left:.3rem">/40</span></div>
+              <div class="score-row"><div class="score-team">5. Creative Catalyst</div><input class="score-inp" value="24" oninput="recalcTotal(this,4)"><span style="font-size:.72rem;color:var(--S);margin-left:.3rem">/40</span></div>
+            </div>
+            <div style="margin-top:1rem;display:flex;gap:.6rem">
+              <button class="tb-btn primary" onclick="saveScores()" style="flex:1;justify-content:center">💾 Save Scores</button>
+              <button class="tb-btn" onclick="showToast('📢 Leaderboard published to website!')" style="flex:1;justify-content:center">🌐 Publish Live</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Live Standings</div><span class="badge badge-green">Auto-updated</span></div>
+            <table class="tbl">
+              <thead><tr><th>Rank</th><th>Team</th><th>R1</th><th>R2</th><th>Total</th></tr></thead>
+              <tbody id="lb-live">
+                <tr><td><span style="color:#d4af37;font-weight:700">1</span></td><td style="color:var(--white)">The Brand Hunters</td><td>28</td><td>31</td><td style="color:var(--G);font-family:'Bebas Neue',sans-serif;font-size:1.2rem">59</td></tr>
+                <tr><td><span style="color:#c0c0c0;font-weight:700">2</span></td><td style="color:var(--white)">Pixel Pitch Co.</td><td>27</td><td>28</td><td style="color:var(--G);font-family:'Bebas Neue',sans-serif;font-size:1.2rem">55</td></tr>
+                <tr><td><span style="color:#cd7f32;font-weight:700">3</span></td><td style="color:var(--white)">Ad Alchemists</td><td>25</td><td>27</td><td style="color:var(--G);font-family:'Bebas Neue',sans-serif;font-size:1.2rem">52</td></tr>
+                <tr><td>4</td><td style="color:var(--white)">MarketMind Squad</td><td>24</td><td>26</td><td style="color:var(--G);font-family:'Bebas Neue',sans-serif;font-size:1.2rem">50</td></tr>
+                <tr><td>5</td><td style="color:var(--white)">Creative Catalyst</td><td>22</td><td>24</td><td style="color:var(--G);font-family:'Bebas Neue',sans-serif;font-size:1.2rem">46</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: VOTING
+      ══════════════════════════ -->
+      <div class="panel" id="panel-voting">
+        <div class="page-header">
+          <h1>VOTING</h1>
+          <p>Monitor People's Choice Award votes in real time.</p>
+        </div>
+
+        <div class="stat-row" style="grid-template-columns:repeat(3,1fr)">
+          <div class="stat-card turq"><div class="stat-label">Total Votes Cast</div><div class="stat-value">312</div><div class="stat-trend up">↑ +42 today</div></div>
+          <div class="stat-card green"><div class="stat-label">Leading Team</div><div class="stat-value" style="font-size:1.4rem">Hunters</div><div class="stat-sub">62% of votes</div></div>
+          <div class="stat-card gold"><div class="stat-label">Voting Status</div><div class="stat-value" style="font-size:1.6rem">OPEN</div><div class="stat-sub">Closes Apr 17</div></div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Vote Distribution</div>
+              <div style="display:flex;gap:.6rem">
+                <button class="btn-sm success" onclick="showToast('✅ Voting is now OPEN')">Open Voting</button>
+                <button class="btn-sm danger" onclick="showToast('🔒 Voting is now CLOSED')">Close Voting</button>
+              </div>
+            </div>
+            <div class="chart-bar-row">
+              <div class="chart-bar-item"><div class="chart-bar-label">🎨 The Brand Hunters <span>193 votes</span></div><div class="prog-bar"><div class="prog-fill" style="width:62%"></div></div></div>
+              <div class="chart-bar-item"><div class="chart-bar-label">💡 Pixel Pitch Co. <span>75 votes</span></div><div class="prog-bar"><div class="prog-fill" style="width:24%"></div></div></div>
+              <div class="chart-bar-item"><div class="chart-bar-label">⚡ Ad Alchemists <span>44 votes</span></div><div class="prog-bar"><div class="prog-fill" style="width:14%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Voting Controls</div></div>
+            <div class="toggle-row">
+              <div class="toggle-info"><h4>Enable Public Voting</h4><p>Allow visitors to cast their vote</p></div>
+              <label class="toggle"><input type="checkbox" checked onchange="showToast(this.checked?'✅ Voting enabled':'🔒 Voting disabled')"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><h4>Show Vote Counts</h4><p>Display current percentages publicly</p></div>
+              <label class="toggle"><input type="checkbox" checked onchange="showToast(this.checked?'✅ Counts visible':'🙈 Counts hidden')"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><h4>One Vote Per IP</h4><p>Prevent duplicate votes</p></div>
+              <label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label>
+            </div>
+            <div style="margin-top:1rem">
+              <button class="tb-btn danger" onclick="showToast('🗑 All votes reset to zero!')" style="color:var(--red);border-color:var(--red)">🗑 Reset All Votes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: JUDGES
+      ══════════════════════════ -->
+      <div class="panel" id="panel-judges">
+        <div class="page-header">
+          <h1>JUDGES PANEL</h1>
+          <p>Manage judge profiles shown on the website.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Current Judges</div><button class="card-action" onclick="openModal('add-judge-modal')">+ Add Judge</button></div>
+            <table class="tbl">
+              <thead><tr><th>Name</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td style="color:var(--white)">Dr. Anjali Desai</td><td>Professor, Marketing</td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Judge removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white)">Mr. Rohit Kapoor</td><td>Brand Manager, HUL</td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Judge removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white)">Ms. Nandita Rao</td><td>Digital Marketing Head</td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Judge removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white)">Mr. Suresh Pillai</td><td>Startup Founder</td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Judge removed.')">Remove</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Add / Edit Judge</div></div>
+            <div class="f-group"><div class="f-label">Full Name</div><input class="f-input" placeholder="Judge full name"></div>
+            <div class="f-group"><div class="f-label">Title / Role</div><input class="f-input" placeholder="e.g. Brand Manager, HUL"></div>
+            <div class="f-group"><div class="f-label">Experience</div><textarea class="f-input" rows="2" placeholder="Short bio / experience"></textarea></div>
+            <div class="f-group"><div class="f-label">Display Icon (emoji)</div><input class="f-input" placeholder="e.g. 👔"></div>
+            <div class="f-group"><div class="f-label">Status</div>
+              <select class="f-input"><option>Active</option><option>Pending</option><option>Inactive</option></select>
+            </div>
+            <button class="tb-btn primary" onclick="showToast('✅ Judge saved!')">Save Judge</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: CONTENT / BLOG
+      ══════════════════════════ -->
+      <div class="panel" id="panel-content">
+        <div class="page-header">
+          <h1>BLOG & CONTENT</h1>
+          <p>Create and manage blog posts, tips, and case studies.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Published Posts</div><button class="card-action" onclick="openModal('new-post-modal')">+ New Post</button></div>
+            <table class="tbl">
+              <thead><tr><th>Title</th><th>Tag</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td style="color:var(--white)">How to Create a Winning Ad in 30 Min</td><td><span class="badge badge-blue">Strategy</span></td><td><span class="badge badge-green">Published</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Post deleted.')">Delete</button></td></tr>
+                <tr><td style="color:var(--white)">Top 5 Branding Strategies</td><td><span class="badge badge-blue">Branding</span></td><td><span class="badge badge-green">Published</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Post deleted.')">Delete</button></td></tr>
+                <tr><td style="color:var(--white)">Inside the Amul Campaign</td><td><span class="badge badge-blue">Case Study</span></td><td><span class="badge badge-green">Published</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Post deleted.')">Delete</button></td></tr>
+                <tr><td style="color:var(--white)">Event Updates — Round 2</td><td><span class="badge badge-blue">Update</span></td><td><span class="badge badge-yellow">Draft</span></td><td><button class="btn-sm success" onclick="showToast('✅ Post published!')">Publish</button> <button class="btn-sm danger" onclick="showToast('Post deleted.')">Delete</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Quick Post Editor</div></div>
+            <div class="f-group"><div class="f-label">Post Title</div><input class="f-input" placeholder="Enter post title..."></div>
+            <div class="f-group"><div class="f-label">Tag / Category</div>
+              <select class="f-input"><option>Strategy</option><option>Branding</option><option>Case Study</option><option>Update</option><option>Tips</option></select>
+            </div>
+            <div class="f-group"><div class="f-label">Icon (emoji)</div><input class="f-input" placeholder="e.g. 📈" style="width:80px"></div>
+            <div class="f-group"><div class="f-label">Excerpt</div><textarea class="f-input" rows="3" placeholder="Short post description (shown on cards)..."></textarea></div>
+            <div style="display:flex;gap:.6rem;margin-top:.5rem">
+              <button class="tb-btn" onclick="showToast('📝 Saved as draft.')">Save Draft</button>
+              <button class="tb-btn primary" onclick="showToast('✅ Post published to website!')">Publish Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: SPONSORS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-sponsors">
+        <div class="page-header">
+          <h1>SPONSORS</h1>
+          <p>Manage sponsor logos and contact information displayed on the website.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Current Sponsors</div></div>
+            <table class="tbl">
+              <thead><tr><th>Name</th><th>Tier</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td style="color:var(--white);font-weight:700">TECHZEN</td><td><span class="badge badge-yellow">Gold</span></td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Sponsor removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white);font-weight:700">NOVA PRINT</td><td><span class="badge badge-blue">Silver</span></td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Sponsor removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white);font-weight:700">STUDIOCRAFT</td><td><span class="badge badge-blue">Silver</span></td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm">Edit</button> <button class="btn-sm danger" onclick="showToast('Sponsor removed.')">Remove</button></td></tr>
+                <tr><td style="color:var(--white);font-weight:700">MARKETPULSE</td><td><span class="badge badge-blue">Bronze</span></td><td><span class="badge badge-yellow">Pending</span></td><td><button class="btn-sm success" onclick="showToast('Sponsor activated!')">Activate</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Add New Sponsor</div></div>
+            <div class="f-group"><div class="f-label">Sponsor Name</div><input class="f-input" placeholder="Company name"></div>
+            <div class="f-group"><div class="f-label">Tier</div>
+              <select class="f-input"><option>Gold</option><option>Silver</option><option>Bronze</option><option>Community</option></select>
+            </div>
+            <div class="f-group"><div class="f-label">Contact Email</div><input class="f-input" type="email" placeholder="contact@sponsor.com"></div>
+            <div class="f-group"><div class="f-label">Website URL</div><input class="f-input" placeholder="https://sponsor.com"></div>
+            <button class="tb-btn primary" onclick="showToast('✅ Sponsor added!')">Add Sponsor</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: WINNERS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-winners">
+        <div class="page-header">
+          <h1>WINNERS</h1>
+          <p>Manage the Hall of Fame — past and current event winners.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Hall of Fame</div><button class="card-action" onclick="openModal('add-winner-modal')">+ Add Winner</button></div>
+            <table class="tbl">
+              <thead><tr><th>Year</th><th>Team</th><th>Slogan</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge-yellow">2024</span></td><td style="color:var(--white)">The Pitch Perfect Trio</td><td style="color:var(--S);font-style:italic">"Less Noise, More Signal"</td><td><button class="btn-sm">Edit</button></td></tr>
+                <tr><td><span class="badge badge-yellow">2023</span></td><td style="color:var(--white)">Market Mavericks</td><td style="color:var(--S);font-style:italic">"Redefine What's Possible"</td><td><button class="btn-sm">Edit</button></td></tr>
+                <tr><td><span class="badge badge-yellow">2022</span></td><td style="color:var(--white)">Brand Wizards</td><td style="color:var(--S);font-style:italic">"Make Every Moment Count"</td><td><button class="btn-sm">Edit</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Add This Year's Winner</div></div>
+            <div class="f-group"><div class="f-label">Year</div><input class="f-input" placeholder="2025"></div>
+            <div class="f-group"><div class="f-label">Winning Team Name</div><input class="f-input" placeholder="Team name"></div>
+            <div class="f-group"><div class="f-label">Winning Slogan</div><input class="f-input" placeholder="Their tagline"></div>
+            <div class="f-group"><div class="f-label">Short Description</div><textarea class="f-input" rows="2" placeholder="Brief description of their winning campaign"></textarea></div>
+            <button class="tb-btn primary" onclick="showToast('🏆 Winner added to Hall of Fame!')">Add to Hall of Fame</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: ANNOUNCEMENTS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-announcements">
+        <div class="page-header">
+          <h1>ANNOUNCEMENTS</h1>
+          <p>Post announcements visible on the website banner or hero section.</p>
+        </div>
+
+        <div class="card" style="margin-bottom:1.2rem">
+          <div class="card-header"><div class="card-title">📣 Create Announcement</div></div>
+          <div class="f-row">
+            <div class="f-group"><div class="f-label">Title</div><input class="f-input" id="ann-title" placeholder="Announcement title" oninput="updatePreview()"></div>
+            <div class="f-group"><div class="f-label">Type</div>
+              <select class="f-input"><option>Info</option><option>Warning</option><option>Success</option><option>Urgent</option></select>
+            </div>
+          </div>
+          <div class="f-group"><div class="f-label">Message</div><textarea class="f-input" rows="3" id="ann-msg" placeholder="Write your announcement here..." oninput="updatePreview()"></textarea></div>
+          <div class="f-group"><div class="f-label">Preview</div><div class="ann-preview" id="ann-preview"><i style="color:var(--S)">Preview will appear here as you type...</i></div></div>
+          <div style="display:flex;gap:.6rem;margin-top:.5rem">
+            <button class="tb-btn" onclick="showToast('📝 Announcement saved as draft.')">Save Draft</button>
+            <button class="tb-btn primary" onclick="showToast('📣 Announcement published to website!')">Publish Now</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Past Announcements</div></div>
+          <table class="tbl">
+            <thead><tr><th>Title</th><th>Type</th><th>Published</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td style="color:var(--white)">Round 2 Results Announced!</td><td><span class="badge badge-green">Success</span></td><td>Apr 12, 2025</td><td><span class="badge badge-green">Active</span></td><td><button class="btn-sm danger" onclick="showToast('Announcement removed.')">Remove</button></td></tr>
+              <tr><td style="color:var(--white)">Submission Deadline Extended</td><td><span class="badge badge-yellow">Warning</span></td><td>Apr 10, 2025</td><td><span class="badge badge-blue">Archived</span></td><td><button class="btn-sm danger" onclick="showToast('Announcement removed.')">Remove</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: MESSAGES
+      ══════════════════════════ -->
+      <div class="panel" id="panel-messages">
+        <div class="page-header">
+          <h1>MESSAGES</h1>
+          <p>View and respond to messages from the Contact Us form.</p>
+        </div>
+
+        <div class="stat-row" style="grid-template-columns:repeat(3,1fr)">
+          <div class="stat-card red"><div class="stat-label">Unread</div><div class="stat-value">3</div></div>
+          <div class="stat-card turq"><div class="stat-label">Total Messages</div><div class="stat-value">18</div></div>
+          <div class="stat-card green"><div class="stat-label">Replied</div><div class="stat-value">15</div></div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Inbox</div><button class="card-action" onclick="showToast('All messages marked read.')">Mark All Read</button></div>
+            <table class="tbl">
+              <thead><tr><th>From</th><th>Subject</th><th>Time</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr style="background:rgba(68,127,152,.07)"><td style="color:var(--white);font-weight:700">Rahul Verma ●</td><td>Registration query</td><td>2h ago</td><td><button class="btn-sm" onclick="openModal('reply-modal')">Reply</button></td></tr>
+                <tr style="background:rgba(68,127,152,.07)"><td style="color:var(--white);font-weight:700">Sneha Nair ●</td><td>Submission format</td><td>5h ago</td><td><button class="btn-sm" onclick="openModal('reply-modal')">Reply</button></td></tr>
+                <tr style="background:rgba(68,127,152,.07)"><td style="color:var(--white);font-weight:700">Dev Krishnan ●</td><td>Team finder issue</td><td>1d ago</td><td><button class="btn-sm" onclick="openModal('reply-modal')">Reply</button></td></tr>
+                <tr><td>Priya Sharma</td><td>AI tool feedback</td><td>2d ago</td><td><button class="btn-sm" onclick="openModal('reply-modal')">Reply</button></td></tr>
+                <tr><td>Aryan Mehta</td><td>Prize clarification</td><td>3d ago</td><td><button class="btn-sm success">Replied</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Quick Reply</div></div>
+            <div class="f-group"><div class="f-label">To</div><input class="f-input" value="Rahul Verma &lt;rahul@email.com&gt;" readonly></div>
+            <div class="f-group"><div class="f-label">Subject</div><input class="f-input" placeholder="Re: Registration query"></div>
+            <div class="f-group"><div class="f-label">Message</div><textarea class="f-input" rows="5" placeholder="Type your reply here..."></textarea></div>
+            <div style="display:flex;gap:.6rem;margin-top:.5rem">
+              <button class="tb-btn primary" onclick="showToast('✉ Reply sent!')">Send Reply</button>
+              <button class="btn-sm danger" onclick="showToast('Message deleted.')">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: SETTINGS
+      ══════════════════════════ -->
+      <div class="panel" id="panel-settings">
+        <div class="page-header">
+          <h1>SETTINGS</h1>
+          <p>Control website features, visibility, and functionality.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">🌐 Website Features</div></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Registration Open</h4><p>Allow new team registrations</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast(this.checked?'✅ Registration opened':'🔒 Registration closed')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Ad Submission Open</h4><p>Allow file and slogan submissions</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Public Voting</h4><p>People's Choice Award voting</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Show Leaderboard</h4><p>Display live scores to visitors</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Team Finder</h4><p>Enable companion/team matching</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>AI Slogan Tool</h4><p>Enable public AI slogan generator</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Ocean Background</h4><p>Floating ocean element animations</p></div><label class="toggle"><input type="checkbox" checked onchange="showToast('Setting updated')"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Maintenance Mode</h4><p>Show maintenance page to visitors</p></div><label class="toggle"><input type="checkbox" onchange="showToast(this.checked?'⚠ Maintenance mode ON':'✅ Maintenance mode OFF')"><span class="toggle-slider"></span></label></div>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom:1.2rem">
+              <div class="card-header"><div class="card-title">🔐 Admin Access</div></div>
+              <div class="f-group"><div class="f-label">Change Username</div><input class="f-input" placeholder="New username"></div>
+              <div class="f-group"><div class="f-label">New Password</div><input class="f-input" type="password" placeholder="New password"></div>
+              <div class="f-group"><div class="f-label">Confirm Password</div><input class="f-input" type="password" placeholder="Confirm new password"></div>
+              <button class="tb-btn primary" onclick="showToast('✅ Credentials updated!')">Update Credentials</button>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><div class="card-title">🎨 Theme Controls</div></div>
+              <div class="f-group"><div class="f-label">Primary Color (Turquoise)</div><input class="f-input" value="#447F98" type="color" style="height:38px;padding:.2rem"></div>
+              <div class="f-group"><div class="f-label">Accent Color (Glacier)</div><input class="f-input" value="#B9D8E1" type="color" style="height:38px;padding:.2rem"></div>
+              <button class="tb-btn primary" onclick="showToast('🎨 Theme saved!')">Apply Theme</button>
+              <button class="tb-btn" onclick="showToast('↩ Theme reset to default.')" style="margin-left:.5rem">Reset Default</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════
+           PANEL: EVENT CONFIG
+      ══════════════════════════ -->
+      <div class="panel" id="panel-eventconfig">
+        <div class="page-header">
+          <h1>EVENT CONFIG</h1>
+          <p>Configure event details, dates, prizes, and rules shown on the website.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-header"><div class="card-title">📅 Event Details</div></div>
+            <div class="f-group"><div class="f-label">Event Name</div><input class="f-input" value="Brand Aid 2025"></div>
+            <div class="f-group"><div class="f-label">Tagline</div><input class="f-input" value="Where Strategy Meets Creativity"></div>
+            <div class="f-group"><div class="f-label">Event Date</div><input class="f-input" type="date" value="2025-04-18"></div>
+            <div class="f-group"><div class="f-label">Venue</div><input class="f-input" value="Main Auditorium, DBS College"></div>
+            <div class="f-group"><div class="f-label">Coordinator Name</div><input class="f-input" value="Prof. Meera Joshi"></div>
+            <div class="f-group"><div class="f-label">Contact Email</div><input class="f-input" value="brandaid@college.edu.in"></div>
+            <div class="f-group"><div class="f-label">Contact Phone</div><input class="f-input" value="+91 98765 43210"></div>
+            <div class="f-group"><div class="f-label">Instagram Handle</div><input class="f-input" value="@brandaid_official"></div>
+            <button class="tb-btn primary" onclick="showToast('✅ Event details saved!')">Save Details</button>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom:1.2rem">
+              <div class="card-header"><div class="card-title">🎁 Prize Configuration</div></div>
+              <div class="f-row">
+                <div class="f-group"><div class="f-label">🥇 Winner Prize</div><input class="f-input" value="₹10,000"></div>
+                <div class="f-group"><div class="f-label">🥈 Runner-Up</div><input class="f-input" value="₹5,000"></div>
+              </div>
+              <div class="f-row">
+                <div class="f-group"><div class="f-label">🏆 Best Creative Ad</div><input class="f-input" value="₹2,500"></div>
+                <div class="f-group"><div class="f-label">🗳 People's Choice</div><input class="f-input" value="₹1,500"></div>
+              </div>
+              <div class="f-group"><div class="f-label">Registration Fee (₹)</div><input class="f-input" value="200"></div>
+              <button class="tb-btn primary" onclick="showToast('✅ Prizes updated!')">Save Prizes</button>
+            </div>
+
+            <div class="card">
+              <div class="card-header"><div class="card-title">📜 Round Timing</div></div>
+              <div class="f-row">
+                <div class="f-group"><div class="f-label">Round 1 (mins)</div><input class="f-input" value="30" type="number"></div>
+                <div class="f-group"><div class="f-label">Round 2 (mins)</div><input class="f-input" value="45" type="number"></div>
+              </div>
+              <div class="f-row">
+                <div class="f-group"><div class="f-label">Pitch (mins)</div><input class="f-input" value="10" type="number"></div>
+                <div class="f-group"><div class="f-label">Q&A (mins)</div><input class="f-input" value="5" type="number"></div>
+              </div>
+              <div class="f-group"><div class="f-label">Max Team Size</div><input class="f-input" value="4" type="number"></div>
+              <div class="f-group"><div class="f-label">Min Team Size</div><input class="f-input" value="2" type="number"></div>
+              <button class="tb-btn primary" onclick="showToast('✅ Round config saved!')">Save Config</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+</div><!-- /app -->
+
+<!-- ══ MODALS ══ -->
+
+<!-- Export Modal -->
+<div class="modal-overlay" id="export-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('export-modal')">✕</button>
+    <h3>📥 Export Data</h3>
+    <p style="font-size:.84rem;color:var(--S);margin-bottom:1.2rem">Choose which data to export as CSV.</p>
+    <div style="display:flex;flex-direction:column;gap:.6rem">
+      <button class="tb-btn" onclick="showToast('📥 Registrations.csv downloaded!');closeModal('export-modal')" style="justify-content:flex-start">📝 Export Registrations</button>
+      <button class="tb-btn" onclick="showToast('📥 Submissions.csv downloaded!');closeModal('export-modal')" style="justify-content:flex-start">📤 Export Submissions</button>
+      <button class="tb-btn" onclick="showToast('📥 Votes.csv downloaded!');closeModal('export-modal')" style="justify-content:flex-start">🗳 Export Voting Data</button>
+      <button class="tb-btn" onclick="showToast('📥 Messages.csv downloaded!');closeModal('export-modal')" style="justify-content:flex-start">✉️ Export Messages</button>
+      <button class="tb-btn primary" onclick="showToast('📦 Full export downloaded!');closeModal('export-modal')" style="justify-content:center">📦 Export Everything</button>
+    </div>
+  </div>
+</div>
+
+<!-- View Team Modal -->
+<div class="modal-overlay" id="view-team-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('view-team-modal')">✕</button>
+    <h3>📋 Team Details</h3>
+    <table class="tbl" style="margin-top:.8rem">
+      <tr><td style="color:var(--S)">Team Name</td><td style="color:var(--white);font-weight:600">The Brand Hunters</td></tr>
+      <tr><td style="color:var(--S)">College</td><td>DBS College, Dehradun</td></tr>
+      <tr><td style="color:var(--S)">Course</td><td>BBA 3rd Year</td></tr>
+      <tr><td style="color:var(--S)">Members</td><td>Aryan, Priya, Rahul, Sneha</td></tr>
+      <tr><td style="color:var(--S)">Email</td><td>brandh@dbs.edu</td></tr>
+      <tr><td style="color:var(--S)">Phone</td><td>+91 98765 43210</td></tr>
+      <tr><td style="color:var(--S)">Registered</td><td>Apr 10, 2025 · 09:14 AM</td></tr>
+      <tr><td style="color:var(--S)">Status</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+    </table>
+    <div style="display:flex;gap:.6rem;margin-top:1.2rem">
+      <button class="tb-btn primary" onclick="closeModal('view-team-modal')">Close</button>
+      <button class="btn-sm danger" onclick="showToast('⚠ Team disqualified.');closeModal('view-team-modal')">Disqualify</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Judge Modal -->
+<div class="modal-overlay" id="add-judge-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-judge-modal')">✕</button>
+    <h3>👨‍⚖️ Add New Judge</h3>
+    <div class="f-group"><div class="f-label">Full Name</div><input class="f-input" placeholder="Judge full name"></div>
+    <div class="f-group"><div class="f-label">Title / Role</div><input class="f-input" placeholder="e.g. Professor, Marketing"></div>
+    <div class="f-group"><div class="f-label">Experience</div><textarea class="f-input" rows="2" placeholder="Short bio"></textarea></div>
+    <div class="f-group"><div class="f-label">Emoji Icon</div><input class="f-input" placeholder="e.g. 🎯" style="width:80px"></div>
+    <button class="tb-btn primary" onclick="showToast('✅ Judge added!');closeModal('add-judge-modal')" style="margin-top:.5rem">Add Judge</button>
+  </div>
+</div>
+
+<!-- Add Winner Modal -->
+<div class="modal-overlay" id="add-winner-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-winner-modal')">✕</button>
+    <h3>🏆 Add Winner</h3>
+    <div class="f-group"><div class="f-label">Year</div><input class="f-input" placeholder="2025"></div>
+    <div class="f-group"><div class="f-label">Team Name</div><input class="f-input" placeholder="Winning team"></div>
+    <div class="f-group"><div class="f-label">Winning Slogan</div><input class="f-input" placeholder="Their tagline"></div>
+    <button class="tb-btn primary" onclick="showToast('🏆 Winner added!');closeModal('add-winner-modal')" style="margin-top:.5rem">Add to Hall of Fame</button>
+  </div>
+</div>
+
+<!-- Reply Modal -->
+<div class="modal-overlay" id="reply-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('reply-modal')">✕</button>
+    <h3>✉️ Reply to Message</h3>
+    <div class="f-group"><div class="f-label">From</div><input class="f-input" value="Rahul Verma — Registration query" readonly></div>
+    <div class="f-group"><div class="f-label">Reply</div><textarea class="f-input" rows="5" placeholder="Type your reply..."></textarea></div>
+    <button class="tb-btn primary" onclick="showToast('✉ Reply sent!');closeModal('reply-modal');document.getElementById('msg-badge').textContent=Math.max(0,parseInt(document.getElementById('msg-badge').textContent)-1)" style="margin-top:.5rem">Send Reply</button>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════
+   LOGIN
+════════════════════════ */
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = 'brandaid2025';
+
+document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('login-user').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogin(){
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  if(u === ADMIN_USER && p === ADMIN_PASS){
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').classList.add('active');
+    startClock(); startCountdown();
+  } else {
+    document.getElementById('login-err').classList.add('show');
+    document.getElementById('login-pass').value = '';
+  }
+}
+
+function doLogout(){
+  document.getElementById('app').classList.remove('active');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+}
+
+/* ════════════════════════
+   NAVIGATION
+════════════════════════ */
+const titles = {
+  dashboard:'Dashboard', registrations:'Registrations', submissions:'Submissions',
+  leaderboard:'Leaderboard', voting:'Voting', judges:'Judges Panel',
+  content:'Blog & Content', sponsors:'Sponsors', winners:'Winners',
+  announcements:'Announcements', messages:'Messages', settings:'Settings', eventconfig:'Event Config'
+};
+
+function goPanel(id, btn){
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('topbar-title').textContent = titles[id] || id;
+  if(btn) btn.classList.add('active');
+  else {
+    document.querySelectorAll('.sb-link').forEach(b => {
+      if(b.textContent.toLowerCase().includes(titles[id]?.toLowerCase().slice(0,6) || '')) b.classList.add('active');
+    });
+  }
+  // close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ════════════════════════
+   CLOCK
+════════════════════════ */
+function startClock(){
+  const el = document.getElementById('tb-clock');
+  const update = () => {
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  };
+  update(); setInterval(update, 1000);
+}
+
+/* ════════════════════════
+   COUNTDOWN
+════════════════════════ */
+function startCountdown(){
+  const target = new Date('2026-04-18T09:00:00');
+  const tick = () => {
+    const diff = target - new Date();
+    if(diff <= 0) return;
+    const d=Math.floor(diff/86400000), h=Math.floor((diff%86400000)/3600000),
+          m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+    document.getElementById('a-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('a-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('a-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('a-s').textContent = String(s).padStart(2,'0');
+  };
+  tick(); setInterval(tick, 1000);
+}
+
+/* ════════════════════════
+   TOAST
+════════════════════════ */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ════════════════════════
+   MODALS
+════════════════════════ */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target === m) m.classList.remove('open'); });
+});
+
+/* ════════════════════════
+   LEADERBOARD SCORES
+════════════════════════ */
+function saveScores(){
+  showToast('💾 Scores saved and published!');
+}
+function recalcTotal(inp, idx){
+  showToast('Score updated — click Save to publish');
+}
+
+/* ════════════════════════
+   ANNOUNCEMENT PREVIEW
+════════════════════════ */
+function updatePreview(){
+  const title = document.getElementById('ann-title')?.value || '';
+  const msg   = document.getElementById('ann-msg')?.value   || '';
+  const preview = document.getElementById('ann-preview');
+  if(!title && !msg){ preview.innerHTML = '<i style="color:var(--S)">Preview will appear here as you type...</i>'; return; }
+  preview.innerHTML = `<b style="color:var(--white)">${title}</b>${msg ? '<br><span style="color:var(--text)">' + msg + '</span>' : ''}`;
+}
+</script>
+</body>
+</html>

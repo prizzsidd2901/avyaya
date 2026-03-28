@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avyaya — The Ultimate Marketing Championship</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="grid-bg"></div>
+
+<!-- ══ FLOATING OCEAN ELEMENTS BACKGROUND ══ -->
+<div class="ocean-bg" aria-hidden="true">
+
+  <!-- STARFISH 1 -->
+  <svg class="el el-star1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" fill="none" stroke="rgba(185,216,225,0.55)" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="50" cy="50" r="8" fill="rgba(68,127,152,0.25)" stroke="rgba(185,216,225,0.4)" stroke-width="1.5"/>
+    <circle cx="35" cy="30" r="2" fill="rgba(185,216,225,0.35)"/><circle cx="65" cy="30" r="2" fill="rgba(185,216,225,0.35)"/>
+    <circle cx="20" cy="52" r="1.8" fill="rgba(185,216,225,0.35)"/><circle cx="80" cy="52" r="1.8" fill="rgba(185,216,225,0.35)"/>
+    <circle cx="32" cy="75" r="1.8" fill="rgba(185,216,225,0.35)"/><circle cx="68" cy="75" r="1.8" fill="rgba(185,216,225,0.35)"/>
+  </svg>
+
+  <!-- STARFISH 2 (teal) -->
+  <svg class="el el-star2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" fill="rgba(68,127,152,0.18)" stroke="rgba(98,155,182,0.5)" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="50" cy="50" r="7" fill="rgba(68,127,152,0.3)"/>
+    <circle cx="38" cy="28" r="1.5" fill="rgba(214,235,243,0.5)"/><circle cx="62" cy="28" r="1.5" fill="rgba(214,235,243,0.5)"/>
+    <circle cx="22" cy="54" r="1.5" fill="rgba(214,235,243,0.5)"/><circle cx="78" cy="54" r="1.5" fill="rgba(214,235,243,0.5)"/>
+  </svg>
+
+  <!-- STARFISH 3 (outline, small) -->
+  <svg class="el el-star3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" fill="none" stroke="rgba(214,235,243,0.4)" stroke-width="3" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- STARFISH 4 accent -->
+  <svg class="el el-star4" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="30,3 36,21 57,21 41,34 47,55 30,42 13,55 19,34 3,21 24,21" fill="rgba(185,216,225,0.2)" stroke="rgba(185,216,225,0.45)" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- SCALLOP SHELL 1 (light) -->
+  <svg class="el el-shell1" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60,100 Q10,70 15,30 Q60,5 105,30 Q110,70 60,100Z" fill="rgba(185,216,225,0.15)" stroke="rgba(98,155,182,0.5)" stroke-width="1.8"/>
+    <line x1="60" y1="100" x2="25" y2="22" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="38" y2="13" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="52" y2="9"  stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="60" y2="8"  stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="68" y2="9"  stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="82" y2="13" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="95" y2="22" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <circle cx="40" cy="12" r="3.5" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="50" cy="8"  r="3.5" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="60" cy="7"  r="3.5" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="70" cy="8"  r="3.5" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="80" cy="12" r="3.5" fill="rgba(98,155,182,0.4)"/>
+  </svg>
+
+  <!-- SCALLOP SHELL 2 (blue) -->
+  <svg class="el el-shell2" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60,100 Q10,70 15,30 Q60,5 105,30 Q110,70 60,100Z" fill="rgba(68,127,152,0.18)" stroke="rgba(68,127,152,0.55)" stroke-width="1.8"/>
+    <line x1="60" y1="100" x2="25" y2="22" stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="38" y2="13" stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="52" y2="9"  stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="60" y2="8"  stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="68" y2="9"  stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="82" y2="13" stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <line x1="60" y1="100" x2="95" y2="22" stroke="rgba(68,127,152,0.45)" stroke-width="1.2"/>
+    <circle cx="40" cy="12" r="3.5" fill="rgba(68,127,152,0.5)"/>
+    <circle cx="50" cy="8"  r="3.5" fill="rgba(68,127,152,0.5)"/>
+    <circle cx="60" cy="7"  r="3.5" fill="rgba(68,127,152,0.5)"/>
+    <circle cx="70" cy="8"  r="3.5" fill="rgba(68,127,152,0.5)"/>
+    <circle cx="80" cy="12" r="3.5" fill="rgba(68,127,152,0.5)"/>
+  </svg>
+
+  <!-- CONCH SHELL -->
+  <svg class="el el-conch" viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg">
+    <path d="M70,10 Q90,30 80,55 Q75,80 55,95 Q35,110 15,100 Q0,88 10,70 Q20,52 38,48 Q55,44 60,30 Q62,18 50,12 Q38,6 28,15 Q18,24 22,40" fill="none" stroke="rgba(185,216,225,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M50,12 Q65,20 58,38 Q52,52 40,55 Q25,60 20,72 Q14,86 22,96" fill="none" stroke="rgba(185,216,225,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="45" cy="70" rx="22" ry="30" fill="rgba(185,216,225,0.07)" stroke="rgba(185,216,225,0.22)" stroke-width="1.2" transform="rotate(-20,45,70)"/>
+  </svg>
+
+  <!-- PEARL 1 (large) -->
+  <svg class="el el-pearl1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="pg1" cx="35%" cy="30%" r="65%">
+        <stop offset="0%"   stop-color="rgba(214,235,243,0.9)"/>
+        <stop offset="40%"  stop-color="rgba(185,216,225,0.6)"/>
+        <stop offset="100%" stop-color="rgba(68,127,152,0.3)"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="44" fill="url(#pg1)" stroke="rgba(185,216,225,0.3)" stroke-width="1"/>
+    <ellipse cx="38" cy="34" rx="12" ry="7" fill="rgba(255,255,255,0.45)" transform="rotate(-30,38,34)"/>
+    <circle  cx="62" cy="64" r="5"   fill="rgba(255,255,255,0.2)"/>
+  </svg>
+
+  <!-- PEARL 2 (medium) -->
+  <svg class="el el-pearl2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="pg2" cx="35%" cy="30%" r="65%">
+        <stop offset="0%"   stop-color="rgba(214,235,243,0.85)"/>
+        <stop offset="50%"  stop-color="rgba(185,216,225,0.55)"/>
+        <stop offset="100%" stop-color="rgba(98,155,182,0.25)"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="44" fill="url(#pg2)" stroke="rgba(185,216,225,0.25)" stroke-width="1"/>
+    <ellipse cx="36" cy="32" rx="11" ry="6" fill="rgba(255,255,255,0.4)" transform="rotate(-25,36,32)"/>
+  </svg>
+
+  <!-- PEARL 3 (small accent) -->
+  <svg class="el el-pearl3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="pg3" cx="35%" cy="30%" r="65%">
+        <stop offset="0%"   stop-color="rgba(185,216,225,0.9)"/>
+        <stop offset="100%" stop-color="rgba(68,127,152,0.3)"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="44" fill="url(#pg3)"/>
+    <ellipse cx="37" cy="33" rx="10" ry="5.5" fill="rgba(255,255,255,0.5)" transform="rotate(-28,37,33)"/>
+  </svg>
+
+  <!-- SEA TURTLE -->
+  <svg class="el el-turtle" viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="65" rx="35" ry="28" fill="rgba(68,127,152,0.22)" stroke="rgba(98,155,182,0.55)" stroke-width="2"/>
+    <ellipse cx="70" cy="63" rx="24" ry="19" fill="none" stroke="rgba(98,155,182,0.45)" stroke-width="1.5"/>
+    <line x1="70" y1="44" x2="70" y2="82" stroke="rgba(98,155,182,0.35)" stroke-width="1.2"/>
+    <line x1="46" y1="63" x2="94" y2="63" stroke="rgba(98,155,182,0.35)" stroke-width="1.2"/>
+    <line x1="52" y1="50" x2="88" y2="76" stroke="rgba(98,155,182,0.25)" stroke-width="1"/>
+    <line x1="88" y1="50" x2="52" y2="76" stroke="rgba(98,155,182,0.25)" stroke-width="1"/>
+    <ellipse cx="70" cy="30" rx="11" ry="10" fill="rgba(68,127,152,0.35)" stroke="rgba(98,155,182,0.55)" stroke-width="1.8"/>
+    <circle cx="65" cy="27" r="2.5" fill="rgba(214,235,243,0.7)"/><circle cx="75" cy="27" r="2.5" fill="rgba(214,235,243,0.7)"/>
+    <circle cx="65" cy="27" r="1"   fill="rgba(7,13,18,0.6)"/><circle cx="75" cy="27" r="1" fill="rgba(7,13,18,0.6)"/>
+    <ellipse cx="35"  cy="55" rx="16" ry="7" fill="rgba(68,127,152,0.2)" stroke="rgba(98,155,182,0.4)" stroke-width="1.5" transform="rotate(-25,35,55)"/>
+    <ellipse cx="105" cy="55" rx="16" ry="7" fill="rgba(68,127,152,0.2)" stroke="rgba(98,155,182,0.4)" stroke-width="1.5" transform="rotate(25,105,55)"/>
+    <ellipse cx="42"  cy="88" rx="13" ry="6" fill="rgba(68,127,152,0.2)" stroke="rgba(98,155,182,0.4)" stroke-width="1.5" transform="rotate(15,42,88)"/>
+    <ellipse cx="98"  cy="88" rx="13" ry="6" fill="rgba(68,127,152,0.2)" stroke="rgba(98,155,182,0.4)" stroke-width="1.5" transform="rotate(-15,98,88)"/>
+    <path d="M70,93 Q65,110 60,118" fill="none" stroke="rgba(98,155,182,0.45)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <!-- CORAL -->
+  <svg class="el el-coral" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M40,115 Q40,85 40,70" stroke="rgba(98,155,182,0.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M40,90 Q25,75 18,60" stroke="rgba(98,155,182,0.45)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M40,80 Q55,65 62,50" stroke="rgba(98,155,182,0.45)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M40,70 Q28,52 22,38" stroke="rgba(98,155,182,0.4)"  stroke-width="2"   fill="none" stroke-linecap="round"/>
+    <path d="M40,70 Q52,52 58,38" stroke="rgba(98,155,182,0.4)"  stroke-width="2"   fill="none" stroke-linecap="round"/>
+    <path d="M18,60 Q10,48 8,35"  stroke="rgba(98,155,182,0.35)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M62,50 Q70,38 72,25" stroke="rgba(98,155,182,0.35)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="22" cy="37" r="4" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="58" cy="37" r="4" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="8"  cy="34" r="3" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="72" cy="24" r="3" fill="rgba(98,155,182,0.4)"/>
+    <circle cx="40" cy="69" r="3.5" fill="rgba(98,155,182,0.45)"/>
+  </svg>
+
+  <!-- BLUE FLOWER -->
+  <svg class="el el-flower1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="22" rx="10" ry="20" fill="rgba(98,155,182,0.35)" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <ellipse cx="50" cy="78" rx="10" ry="20" fill="rgba(98,155,182,0.35)" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <ellipse cx="22" cy="50" rx="20" ry="10" fill="rgba(98,155,182,0.35)" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <ellipse cx="78" cy="50" rx="20" ry="10" fill="rgba(98,155,182,0.35)" stroke="rgba(185,216,225,0.4)" stroke-width="1.2"/>
+    <ellipse cx="29" cy="29" rx="10" ry="20" fill="rgba(98,155,182,0.3)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2" transform="rotate(45,29,29)"/>
+    <ellipse cx="71" cy="29" rx="10" ry="20" fill="rgba(98,155,182,0.3)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2" transform="rotate(-45,71,29)"/>
+    <ellipse cx="29" cy="71" rx="10" ry="20" fill="rgba(98,155,182,0.3)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2" transform="rotate(-45,29,71)"/>
+    <ellipse cx="71" cy="71" rx="10" ry="20" fill="rgba(98,155,182,0.3)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2" transform="rotate(45,71,71)"/>
+    <circle cx="50" cy="50" r="12" fill="rgba(68,127,152,0.45)" stroke="rgba(185,216,225,0.5)" stroke-width="1.5"/>
+    <circle cx="50" cy="50" r="5"  fill="rgba(214,235,243,0.6)"/>
+  </svg>
+
+  <!-- WHITE HIBISCUS -->
+  <svg class="el el-flower2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="20" rx="11" ry="22" fill="rgba(214,235,243,0.22)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2"/>
+    <ellipse cx="50" cy="80" rx="11" ry="22" fill="rgba(214,235,243,0.22)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2"/>
+    <ellipse cx="20" cy="50" rx="22" ry="11" fill="rgba(214,235,243,0.22)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2"/>
+    <ellipse cx="80" cy="50" rx="22" ry="11" fill="rgba(214,235,243,0.22)" stroke="rgba(185,216,225,0.35)" stroke-width="1.2"/>
+    <ellipse cx="27" cy="27" rx="11" ry="22" fill="rgba(214,235,243,0.18)" stroke="rgba(185,216,225,0.3)" stroke-width="1" transform="rotate(45,27,27)"/>
+    <ellipse cx="73" cy="27" rx="11" ry="22" fill="rgba(214,235,243,0.18)" stroke="rgba(185,216,225,0.3)" stroke-width="1" transform="rotate(-45,73,27)"/>
+    <ellipse cx="27" cy="73" rx="11" ry="22" fill="rgba(214,235,243,0.18)" stroke="rgba(185,216,225,0.3)" stroke-width="1" transform="rotate(-45,27,73)"/>
+    <ellipse cx="73" cy="73" rx="11" ry="22" fill="rgba(214,235,243,0.18)" stroke="rgba(185,216,225,0.3)" stroke-width="1" transform="rotate(45,73,73)"/>
+    <circle cx="50" cy="50" r="10" fill="rgba(185,216,225,0.35)" stroke="rgba(214,235,243,0.5)" stroke-width="1.5"/>
+    <circle cx="50" cy="50" r="4"  fill="rgba(68,127,152,0.4)"/>
+  </svg>
+
+  <!-- NAUTILUS SPIRAL -->
+  <svg class="el el-nautilus" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55,55 Q55,15 85,15 Q115,15 115,55 Q115,90 80,100 Q45,110 25,85 Q5,60 15,30 Q28,8 55,8 Q85,8 98,30" fill="none" stroke="rgba(185,216,225,0.4)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M55,55 Q70,30 85,35 Q100,42 95,58 Q90,75 72,80 Q54,85 42,72 Q30,59 38,44" fill="none" stroke="rgba(185,216,225,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M55,55 Q62,45 70,48 Q78,52 74,62 Q70,72 62,70 Q54,68 53,60" fill="none" stroke="rgba(185,216,225,0.25)" stroke-width="1.2" stroke-linecap="round"/>
+    <circle cx="55" cy="55" r="5" fill="rgba(68,127,152,0.3)" stroke="rgba(185,216,225,0.4)" stroke-width="1"/>
+    <path d="M38,44 Q30,59 42,72" fill="none" stroke="rgba(98,155,182,0.28)" stroke-width="4"/>
+    <path d="M72,80 Q90,75 95,58" fill="none" stroke="rgba(98,155,182,0.22)" stroke-width="4"/>
+  </svg>
+
+  <!-- BUBBLES -->
+  <svg class="el el-bubbles" viewBox="0 0 150 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30"  cy="170" r="12" fill="none" stroke="rgba(185,216,225,0.3)"  stroke-width="1.5"/>
+    <circle cx="30"  cy="170" r="4"  fill="rgba(214,235,243,0.12)"/>
+    <circle cx="60"  cy="140" r="18" fill="none" stroke="rgba(185,216,225,0.25)" stroke-width="1.5"/>
+    <circle cx="60"  cy="140" r="6"  fill="rgba(214,235,243,0.1)"/>
+    <circle cx="100" cy="160" r="10" fill="none" stroke="rgba(185,216,225,0.28)" stroke-width="1.5"/>
+    <circle cx="130" cy="120" r="15" fill="none" stroke="rgba(185,216,225,0.22)" stroke-width="1.5"/>
+    <circle cx="25"  cy="164" r="3"  fill="rgba(255,255,255,0.22)"/>
+    <circle cx="54"  cy="133" r="4"  fill="rgba(255,255,255,0.18)"/>
+  </svg>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav id="main-nav">
+  <a href="#home" class="logo">Avyaya<span></span></a>
+
+  <!-- Scroll Left Arrow -->
+  <button class="nav-scroll-btn nav-scroll-left" id="nav-scroll-left" onclick="scrollNav(-160)" aria-label="Scroll left">&#8249;</button>
+
+  <!-- Scrollable links wrapper -->
+  <div class="nav-links-wrapper" id="nav-links-wrapper">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#rounds">Structure</a></li>
+      <li><a href="#prizes">Prizes</a></li>
+      <li><a href="#register" class="nav-cta">Register</a></li>
+      <li><a href="#submit">Submit Ad</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#voting">Vote</a></li>
+      <li><a href="#ai-tool">AI Agent</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#content-writing">Content Writing</a></li>
+      <li><a href="#teamfinder">Team Finder</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Scroll Right Arrow -->
+  <button class="nav-scroll-btn nav-scroll-right" id="nav-scroll-right" onclick="scrollNav(160)" aria-label="Scroll right">&#8250;</button>
+
+  <!-- Hamburger (mobile) -->
+  <div class="ham" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Dropdown Menu -->
+<div class="mob" id="mob">
+  <a href="#about"          onclick="closeMenu()">About</a>
+  <!-- <a href="#rounds"         onclick="closeMenu()">Structure</a> -->
+  <!-- <a href="#prizes"         onclick="closeMenu()">Prizes</a> -->
+  <!-- <a href="#register"       onclick="closeMenu()">Register</a> -->
+  <a href="#submit"         onclick="closeMenu()">Submit Ad</a>
+  <!-- <a href="#leaderboard"    onclick="closeMenu()">Leaderboard</a> -->
+  <!-- <a href="#voting"         onclick="closeMenu()">Vote</a> -->
+  <a href="#ai-tool"        onclick="closeMenu()">AI Product Agent</a>
+  <a href="#blog"           onclick="closeMenu()">Blog</a>
+  <a href="#content-writing" onclick="closeMenu()">Content Writing</a>
+  <!-- <a href="#teamfinder"     onclick="closeMenu()">Team Finder</a> -->
+  <a href="#faq"            onclick="closeMenu()">FAQ</a>
+  <a href="#contact"        onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ══ 1. HERO ══ -->
+<section id="home" class="hero">
+  <div class="h-badge">🏆 The Ultimate Marketing Championship</div>
+  <h1 class="h-title">BRAND<br><span class="outline">AID</span></h1>
+  <p class="h-sub">Where Strategy Meets Creativity</p>
+  <p class="h-meta">📅 <b>April 18, 2025</b> &nbsp;|&nbsp; 🏛 <b>Main Auditorium, DBS College</b></p>
+  <div class="cd" id="countdown">
+    <div class="cd-box"><div class="cd-n" id="cd-d">00</div><div class="cd-l">Days</div></div>
+    <div class="cd-box"><div class="cd-n" id="cd-h">00</div><div class="cd-l">Hours</div></div>
+    <div class="cd-box"><div class="cd-n" id="cd-m">00</div><div class="cd-l">Mins</div></div>
+    <div class="cd-box"><div class="cd-n" id="cd-s">00</div><div class="cd-l">Secs</div></div>
+  </div>
+  <div class="btn-row">
+    <a href="#register" class="btn bf">✦ Register Now</a>
+    <a href="#rounds" class="btn bo">View Structure →</a>
+    <a href="#" class="btn bo" onclick="showToast('📥 Rulebook coming soon!');return false">📥 Rulebook</a>
+    <a href="#submit" class="btn bo">Submit Ad ↗</a>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 2. ABOUT ══ -->
+<section id="about" class="reveal">
+  <div class="ag">
+    <div>
+      <div class="sl">About the Event</div>
+      <h2 class="st">WHAT IS<br><span class="dim">Avyaya</span> ?</h2>
+      <p class="sd">We believe fashion is a mirror. It shouldn't just cover; it should reveal. Whether it’s the intricate weave of a suit or the delicate curve of an anti-tarnish cuff, our collection is designed to be an extension of your inner grace. You don't just wear Avyaya; you inhabit it.</p>
+      <br>
+      <p class="sd" style="font-size:.84rem;color:var(--S)">The Avyaya Collection: A Symphony of Grace
+        At the heart of Avyaya lies a commitment to integrity, tradition, and the pursuit of a sophisticated life. Our curated segments are more than just products; they are the building blocks of an exquisite lifestyle designed to harmonize with your inner grace.
+        Guided by our vision to redefine everyday fashion through conscious creativity, we bring you a versatile range that spans from heritage textiles to modern artisanal decor. Each piece is selected to accentuate your individuality while offering a classic elegance that remains accessible.
+        As we continue to grow, our collection remains a living canvas—purposefully designed to evolve with your needs. We leave a constant window open for new, captivating arrivals that will continue to enhance your routine and elevate your surroundings, ensuring that the Avyaya experience is one of perpetual discovery and timeless style.</p>
+      <br><a href="#register" class="btn bf" style="margin-top:.5rem">Shop Now ↗</a>
+    </div>
+    <div class="product-showcase">
+      <div class="pc-head">
+        <div>
+          <div class="pc-kicker">Featured Products</div>
+          <h3>Bracelet Collection</h3>
+        </div>
+        <div class="pc-controls">
+          <label class="pc-add-image" for="product-image-input" aria-label="Add image to current product slide">+ Add Image</label>
+          <input id="product-image-input" type="file" accept="image/*" hidden onchange="previewProductImage(event)">
+          <button class="pc-btn" type="button" onclick="moveProductCarousel(-1)" aria-label="Previous product">‹</button>
+          <button class="pc-btn" type="button" onclick="moveProductCarousel(1)" aria-label="Next product">›</button>
+        </div>
+      </div>
+
+      <!-- Replace each image src below with your real product photo path -->
+      <div class="product-carousel" id="product-carousel">
+        <article class="product-card active">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-01.jpg" alt="Bee Charm Bracelet">
+          </div>
+          <h4>Bee Charm Bracelet</h4>
+          <p>Fresh blue, pearl white, and lime beads built around a silver bee charm.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-02.jpg" alt="Clover Charm Bracelet">
+          </div>
+          <h4>Clover Charm Bracelet</h4>
+          <p>Red, white, and aqua bead pattern with a clover centerpiece for a lucky accent.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-03.jpg" alt="Bicycle Trio Bracelet">
+          </div>
+          <h4>Bicycle Trio Bracelet</h4>
+          <p>Soft pearl and aqua bracelet design styled as a collectible cycle-themed set.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-04.jpg" alt="Leaf Charm Bracelet">
+          </div>
+          <h4>Leaf Charm Bracelet</h4>
+          <p>Deep red and black bead combination with a detailed silver leaf pendant.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-05.jpg" alt="Multi-Charm Pearl Bracelet">
+          </div>
+          <h4>Multi-Charm Pearl Bracelet</h4>
+          <p>Classic pearl-and-red bracelet carrying butterfly, elephant, turtle, and peacock charms.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-06.jpg" alt="Bee Charm Bracelet Yellow">
+          </div>
+          <h4>Bee Charm Bracelet Yellow</h4>
+          <p>Bold yellow and black bead styling with a silver bee charm for a standout look.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-07.jpg" alt="Flower Charm Bracelet">
+          </div>
+          <h4>Flower Charm Bracelet</h4>
+          <p>Bright red and pearl bead arrangement finished with a silver floral pendant.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-art">
+            <img class="product-photo" src="images/products/bracelet-08.jpg" alt="Shell Accent Bracelet">
+          </div>
+          <h4>Shell Accent Bracelet</h4>
+          <p>Pastel pink, aqua, and pearl bead palette with a seashell-inspired focal detail.</p>
+        </article>
+      </div>
+
+      <div class="product-dots" id="product-dots" aria-label="Product carousel navigation">
+        <button class="product-dot active" type="button" onclick="goToProductSlide(0)" aria-label="Go to product 1"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(1)" aria-label="Go to product 2"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(2)" aria-label="Go to product 3"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(3)" aria-label="Go to product 4"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(4)" aria-label="Go to product 5"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(5)" aria-label="Go to product 6"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(6)" aria-label="Go to product 7"></button>
+        <button class="product-dot" type="button" onclick="goToProductSlide(7)" aria-label="Go to product 8"></button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 3. EVENT STRUCTURE ══ -->
+<section id="sdg-goals" class="reveal">
+  <div class="sl">Our Impact Direction</div>
+  <h2 class="st">SDG<br><span class="dim">GOALS</span></h2>
+  <p class="sd">Avyaya is built on the belief that true elegance is inseparable from responsibility. Our brand strategy is meticulously aligned with the United Nations Sustainable Development Goals (SDGs), ensuring that as we curate a sophisticated life for you, we protect the world we share.
+Core Pillars of Impact</p>
+
+  <div class="sdg-grid">
+    <article class="sdg-card">
+      <div class="sdg-num">01</div>
+      <h3>No Poverty</h3>
+      <p>We provide a platform for local artisans and small-scale vendors, ensuring fair trade and economic visibility for traditional craftsmen</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">02</div>
+      <h3> Good Health & Well-being</h3>
+      <p>We advocate for a "Slow Living" philosophy. By promoting Sanctuary Aesthetics and mindful consumption, we provide tools that reduce environmental stressors and enhance mental well-being. Our focus on anti-tarnish, hypoallergenic materials ensures that our products are as safe for your body as they are beautiful.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">03</div>
+      <h3>Quality Education</h3>
+      <p>As a university-born initiative, Avyaya serves as a living laboratory for experiential learning. We bridge the gap between academic theory and industry practice, offering workshops on traditional crafts and modern digital branding to empower the next generation of creative entrepreneurs.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">04</div>
+      <h3>Life on Land</h3>
+      <p>Our soul lies in nature. By prioritizing natural handloom fibers and biodegradable materials like air-dry clay, we actively reduce the chemical footprint on terrestrial ecosystems. We support artisanal practices that preserve local biodiversity rather than depleting it through mass industrialization.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">05</div>
+      <h3>Partnerships for the Goals</h3>
+      <p>Avyaya operates as an Umbrella Brand, specifically designed to foster a collaborative ecosystem. We unite local vendors, wholesale suppliers, and student creators under one vision, proving that collective action is the most powerful tool for sustainable market transformation.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">06</div>
+      <h3>Gender Equality</h3>
+      <p>We provide a platform for local artisans and small-scale vendors, ensuring fair trade and economic visibility for traditional craftsmen.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">07</div>
+      <h3>Decent Work & Economic Growth</h3>
+      <p>Our model supports the local "Orange Economy" by creating a sustainable supply chain that values human labor over automated mass production.</p>
+    </article>
+    <article class="sdg-card">
+      <div class="sdg-num">08</div>
+      <h3>Sustainable Cities & Communities</h3>
+      <p>We celebrate regional heritage (like Dehradun’s local artistry), keeping traditional cultural identities alive within modern urban lifestyles.</p>
+    </article>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- <section id="rounds" class="reveal">
+  <div class="sl">Event Structure</div>
+  <h2 class="st">THE FOUR<br><span class="dim">ROUNDS</span></h2>
+  <div class="rrow"><div class="rn">01</div><div><div class="rname">Product Reveal</div><div class="rdesc">Teams receive a mystery product brief and have 30 minutes to analyse, identify USPs, and define their target market.</div><span class="rbadge">30 Minutes</span></div></div>
+  <div class="rrow"><div class="rn">02</div><div><div class="rname">Creative Advertisement</div><div class="rdesc">Design a full-page print ad, create a tagline, and write copy. Visual creativity and brand coherence are judged equally.</div><span class="rbadge">45 Minutes</span></div></div>
+  <div class="rrow"><div class="rn">03</div><div><div class="rname">Strategy Presentation</div><div class="rdesc">Present a 6-slide marketing strategy covering positioning, pricing, distribution, and digital channels. Judges probe every claim.</div><span class="rbadge">10 Min Pitch + 5 Q&amp;A</span></div></div>
+  <div class="rrow"><div class="rn">04</div><div><div class="rname">Grand Pitch Final</div><div class="rdesc">Top 4 teams compete live. Incorporate Round 3 feedback and deliver the most refined, polished pitch of the competition.</div><span class="rbadge">Finals — Live Stage</span></div></div>
+  <h3 class="section-sub-title">Judging Criteria</h3>
+  <div class="cg">
+    <div class="cb"><div class="cp">30%</div><div class="cn">Creativity</div><div class="cs">Originality &amp; visual impact</div></div>
+    <div class="cb"><div class="cp">25%</div><div class="cn">Strategy</div><div class="cs">Market logic, positioning</div></div>
+    <div class="cb"><div class="cp">25%</div><div class="cn">Presentation</div><div class="cs">Delivery, confidence, clarity</div></div>
+    <div class="cb"><div class="cp">20%</div><div class="cn">Teamwork</div><div class="cs">Coordination &amp; task division</div></div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 4. RULES ══ -->
+<!-- <section id="rules" class="reveal">
+  <div class="sl">Guidelines</div>
+  <h2 class="st">RULES &amp;<br><span class="dim">POLICIES</span></h2>
+  <div style="margin-bottom:1.5rem"><a href="#" class="btn bo" onclick="showToast('📥 Rulebook PDF coming soon!');return false">📥 Download Rulebook PDF</a></div>
+  <div class="rg">
+    <div class="rc"><div class="rnum">01</div><div class="rt">Team Size</div><div class="rd">2–4 members per team. All must be currently enrolled students.</div></div>
+    <div class="rc"><div class="rnum">02</div><div class="rt">Time Limits</div><div class="rd">Strict limits per round. Overruns result in 5-point deductions per minute.</div></div>
+    <div class="rc"><div class="rnum">03</div><div class="rt">Allowed Tools</div><div class="rd">Canva, PowerPoint, Google Slides. No premium paid templates.</div></div>
+    <div class="rc"><div class="rnum">04</div><div class="rt">Plagiarism</div><div class="rd">Zero tolerance. Copied work = immediate disqualification.</div></div>
+    <div class="rc"><div class="rnum">05</div><div class="rt">Submission Format</div><div class="rd">Ads as JPG/PNG (min 1080px), videos as MP4 (max 90s), plans as PDF.</div></div>
+    <div class="rc"><div class="rnum">06</div><div class="rt">Conduct</div><div class="rd">Professional behaviour expected at all times. Judges' decisions are final.</div></div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 5. REGISTRATION ══ -->
+<!-- <section id="register" class="reveal">
+  <div class="sl">Join the Competition</div>
+  <h2 class="st">REGISTER<br><span class="dim">YOUR TEAM</span></h2>
+  <div class="reg-box">
+    <div class="fg">
+      <div class="fi"><label>Team Name</label><input class="inp" type="text" id="f1" placeholder="e.g. The Brand Hunters"></div>
+      <div class="fi"><label>College / Institution</label><input class="inp" type="text" id="f2" placeholder="Your college name"></div>
+      <div class="fi"><label>Course &amp; Year</label><input class="inp" type="text" id="f3" placeholder="e.g. BBA 2nd Year"></div>
+      <div class="fi"><label>Contact Number</label><input class="inp" type="tel" id="f4" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="fi full"><label>Team Members (comma-separated)</label><input class="inp" type="text" id="f5" placeholder="Name 1, Name 2, Name 3, Name 4"></div>
+      <div class="fi full"><label>Team Email</label><input class="inp" type="email" id="f6" placeholder="team@email.com"></div>
+      <div class="fi full"><button class="btn bf" onclick="submitReg()" style="width:100%;justify-content:center;padding:1rem">✦ Submit Registration</button></div>
+    </div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 6. SUBMISSION ══ -->
+<section id="submit" class="reveal">
+  <div class="sl">Online Submission</div>
+  <h2 class="st">SUBMIT YOUR<br><span class="dim">CREATIVE WORK</span></h2>
+  <p class="sd">Upload your poster, video ad, marketing plan, or type your slogan directly here.</p>
+  <div class="stypes">
+    <button class="stype on" onclick="setType(this,'Accepted: JPG / PNG — Max 10 MB')">🖼 Poster</button>
+    <button class="stype" onclick="setType(this,'Accepted: MP4 — Max 90 seconds, 1080p')">🎬 Video Ad</button>
+    <button class="stype" onclick="setType(this,'Accepted: PDF — Max 5 pages')">📄 Marketing Plan</button>
+    <button class="stype" onclick="setType(this,'Type your slogan in the text box below')">✍ Slogan</button>
+  </div>
+  <div class="upa" onclick="showToast('📤 Upload enabled on event day!')">
+    <div style="font-size:2.4rem;margin-bottom:.8rem">☁</div>
+    <div style="color:var(--P);font-size:.87rem;margin-bottom:.3rem">Drop your file here or click to browse</div>
+    <div style="color:var(--S);font-size:.74rem" id="uhint">Accepted: JPG / PNG — Max 10 MB</div>
+  </div>
+  <div style="margin-top:1.4rem">
+    <label style="font-size:.63rem;letter-spacing:2px;text-transform:uppercase;color:var(--T)">Your Slogan / Ad Copy (Optional)</label>
+    <textarea class="inp" rows="3" placeholder="Write your brand slogan or ad copy here..." style="width:100%;margin-top:.5rem;resize:vertical" id="slogan-text"></textarea>
+  </div>
+  <div style="margin-top:1rem"><button class="btn bf" onclick="submitEntry()">Submit Entry</button></div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 7. LEADERBOARD ══ -->
+<!-- <section id="leaderboard" class="reveal">
+  <div class="sl">Live Standings</div>
+  <h2 class="st">LEADER<br><span class="dim">BOARD</span></h2>
+  <table class="lbt">
+    <thead><tr><th>Rank</th><th>Team Name</th><th>Round 1</th><th>Round 2</th><th>Round 3</th><th>Total</th></tr></thead>
+    <tbody id="leaderboard-body">
+      <tr><td><div class="rank r1">1</div></td><td><div class="tn">The Brand Hunters</div></td><td style="color:var(--S)">28</td><td style="color:var(--S)">31</td><td style="color:var(--S)">29</td><td><div class="ts">88</div><div class="sb"><div class="sf" style="width:88%"></div></div></td></tr>
+      <tr><td><div class="rank r2">2</div></td><td><div class="tn">Pixel Pitch Co.</div></td><td style="color:var(--S)">27</td><td style="color:var(--S)">28</td><td style="color:var(--S)">29</td><td><div class="ts">84</div><div class="sb"><div class="sf" style="width:84%"></div></div></td></tr>
+      <tr><td><div class="rank r3">3</div></td><td><div class="tn">Ad Alchemists</div></td><td style="color:var(--S)">25</td><td style="color:var(--S)">27</td><td style="color:var(--S)">27</td><td><div class="ts">79</div><div class="sb"><div class="sf" style="width:79%"></div></div></td></tr>
+      <tr><td><div class="rank">4</div></td><td><div class="tn">MarketMind Squad</div></td><td style="color:var(--S)">24</td><td style="color:var(--S)">26</td><td style="color:var(--S)">24</td><td><div class="ts">74</div><div class="sb"><div class="sf" style="width:74%"></div></div></td></tr>
+      <tr><td><div class="rank">5</div></td><td><div class="tn">Creative Catalyst</div></td><td style="color:var(--S)">22</td><td style="color:var(--S)">24</td><td style="color:var(--S)">23</td><td><div class="ts">69</div><div class="sb"><div class="sf" style="width:69%"></div></div></td></tr>
+    </tbody>
+  </table>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 8. VOTING ══ -->
+<!-- <section id="voting" class="reveal">
+  <div class="sl">People's Choice Award</div>
+  <h2 class="st">VOTE YOUR<br><span class="dim">FAVOURITE</span></h2>
+  <p class="sd" style="margin-bottom:0">One vote per person. Choose the ad you think deserves the People's Choice Award!</p>
+  <div class="vg">
+    <div class="vc"><div class="vi">🎨</div><div class="vb"><div class="vtn">The Brand Hunters</div><div class="vs">"Fuel Your Day, The Smart Way!"</div><div class="vbar"><div class="vfill" id="vf1" style="width:62%"></div></div><button class="vbtn" id="vb1" onclick="castVote(1)">👍 Vote — 62%</button><div class="vpct" id="vp1">186 votes</div></div></div>
+    <div class="vc"><div class="vi">💡</div><div class="vb"><div class="vtn">Pixel Pitch Co.</div><div class="vs">"See the Future, Wear It Today."</div><div class="vbar"><div class="vfill" id="vf2" style="width:24%"></div></div><button class="vbtn" id="vb2" onclick="castVote(2)">👍 Vote — 24%</button><div class="vpct" id="vp2">72 votes</div></div></div>
+    <div class="vc"><div class="vi">⚡</div><div class="vb"><div class="vtn">Ad Alchemists</div><div class="vs">"Bold by Design. Fearless by Choice."</div><div class="vbar"><div class="vfill" id="vf3" style="width:14%"></div></div><button class="vbtn" id="vb3" onclick="castVote(3)">👍 Vote — 14%</button><div class="vpct" id="vp3">42 votes</div></div></div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 9. AI PRODUCT ADVISOR ══ -->
+<section id="ai-tool" class="reveal">
+  <div class="sl">Exclusive AI Feature 🚀</div>
+  <h2 class="st">AI PRODUCT<br><span class="dim">ADVISOR</span></h2>
+  <div class="ai-wrap">
+    <div class="ai-inner">
+      <div>
+        <p style="color:var(--S);font-size:.87rem;line-height:1.8;margin-bottom:1rem">Feed your product information into the website and let the AI agent explain the product, understand customer requirements, and suggest how to improve the product for better market fit.</p>
+        <div class="ai-ins">
+          <input class="ai-in" id="ai-p" placeholder="Product name (e.g. EcoBottle Pro)">
+          <textarea class="ai-in ai-ta" id="ai-details" placeholder="Product details from website (features, price, materials, USP, problem solved)"></textarea>
+          <textarea class="ai-in ai-ta" id="ai-req" placeholder="Customer requirement or question (e.g. I need a budget-friendly bottle that keeps drinks cold and is easy to carry.)"></textarea>
+          <button class="btn bf" onclick="askProductAdvisor()" id="ai-btn" style="justify-content:center;width:100%">✦ Ask AI Product Agent</button>
+        </div>
+        <div class="ai-chat" id="ai-chat" aria-live="polite">
+          <div class="ai-msg ai-msg-assistant">Product Explanation: Share the product and the customer need, and I will explain the offer, match it to the requirement, and suggest enhancement ideas.</div>
+        </div>
+        <div id="ai-extra" style="display:none;margin-top:.8rem">
+          <button class="btn bo" onclick="askProductAdvisor()" style="font-size:.71rem;padding:.5rem 1.2rem">↻ Ask Again</button>
+        </div>
+      </div>
+      <div class="ai-vis">
+        <span class="robot">🤖</span>
+        <p style="color:var(--S);font-size:.81rem;margin-top:.8rem;line-height:1.6">Powered by AI to act like a product-focused chatbot agent for your website. It explains the product clearly, responds to customer needs, and recommends practical feature improvements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 10. PREVIOUS WINNERS ══ -->
+<section id="winners" class="reveal">
+  <div class="sl">Hall of Fame</div>
+  <h2 class="st">PREVIOUS<br><span class="dim">CHAMPIONS</span></h2>
+  <div class="wg">
+    <div class="wc"><div class="wy">Brand Aid 2024</div><div style="font-size:2.4rem;margin-bottom:.9rem">🏆</div><div class="wt">The Pitch Perfect Trio</div><div class="ws">"Less Noise, More Signal"</div></div>
+    <div class="wc"><div class="wy">Brand Aid 2023</div><div style="font-size:2.4rem;margin-bottom:.9rem">🏆</div><div class="wt">Market Mavericks</div><div class="ws">"Redefine What's Possible"</div></div>
+    <div class="wc"><div class="wy">Brand Aid 2022</div><div style="font-size:2.4rem;margin-bottom:.9rem">🏆</div><div class="wt">Brand Wizards</div><div class="ws">"Make Every Moment Count"</div></div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 11. FAQ ══ -->
+<section id="faq" class="reveal">
+  <div class="sl">Quick Answers</div>
+  <h2 class="st">FREQUENTLY<br><span class="dim">ASKED</span></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Who can participate? <i class="faq-ico">+</i></div><div class="faq-a">Any currently enrolled student of BBA, MBA, B.Com, or any management programme. First-year students are absolutely welcome!</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a registration fee? <i class="faq-ico">+</i></div><div class="faq-a">Yes, a nominal fee of ₹200 per team. This covers event materials, certificates, and refreshments on the day.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can first-year students join? <i class="faq-ico">+</i></div><div class="faq-a">Absolutely! Brand Aid is designed to be accessible to all levels. First-year students often bring the freshest ideas.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the submission format? <i class="faq-ico">+</i></div><div class="faq-a">Poster as JPG/PNG (min 1080×1080px), video as MP4 (max 90 seconds, 1080p), marketing plan as PDF (max 5 pages).</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is online participation allowed? <i class="faq-ico">+</i></div><div class="faq-a">Round 1 and Ad Submission can be done online. Rounds 3 and 4 require in-person attendance at the venue.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How many members per team? <i class="faq-ico">+</i></div><div class="faq-a">Teams of 2 to 4 members. Individual participation is not allowed — collaboration is core to Brand Aid.</div></div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 12. PRIZES ══ -->
+<!-- <section id="prizes" class="reveal">
+  <div class="sl">Rewards</div>
+  <h2 class="st">WIN BIG<br><span class="dim">PRIZES</span></h2>
+  <div class="pg">
+    <div class="prize gold"><div class="pico">🥇</div><div class="ptit">Winner</div><div class="pval">₹10,000</div><div class="psub">Trophy + Certificate + Goodies</div></div>
+    <div class="prize silver"><div class="pico">🥈</div><div class="ptit">Runner-Up</div><div class="pval">₹5,000</div><div class="psub">Trophy + Certificate</div></div>
+    <div class="prize"><div class="pico">🏆</div><div class="ptit">Best Creative Ad</div><div class="pval">₹2,500</div><div class="psub">Special Category Award</div></div>
+    <div class="prize"><div class="pico">🗳</div><div class="ptit">People's Choice</div><div class="pval">₹1,500</div><div class="psub">Voted by Audience</div></div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 13. JUDGES ══ -->
+<!-- <section id="judges" class="reveal">
+  <div class="sl">Expert Panel</div>
+  <h2 class="st">MEET THE<br><span class="dim">JUDGES</span></h2>
+  <div class="jg">
+    <div class="jc"><div class="jav">👔</div><div class="jn">Dr. Anjali Desai</div><div class="jr">Professor, Marketing</div><div class="je">15 years teaching brand management at IIM Indore</div></div>
+    <div class="jc"><div class="jav">🎯</div><div class="jn">Mr. Rohit Kapoor</div><div class="jr">Brand Manager, HUL</div><div class="je">10+ years in FMCG branding; led 50M-reach campaigns</div></div>
+    <div class="jc"><div class="jav">📱</div><div class="jn">Ms. Nandita Rao</div><div class="jr">Digital Marketing Head</div><div class="je">Former VP at Dentsu; expert in performance marketing</div></div>
+    <div class="jc"><div class="jav">🚀</div><div class="jn">Mr. Suresh Pillai</div><div class="jr">Startup Founder</div><div class="je">Founded 3 marketing tech startups; angel investor</div></div>
+  </div>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 14. SPONSORS ══ -->
+<!-- <section id="sponsors" class="reveal">
+  <div class="sl">Powered By</div>
+  <h2 class="st">OUR<br><span class="dim">SPONSORS</span></h2>
+  <div class="sprow">
+    <div class="sp">TECHZEN</div><div class="sp">NOVA PRINT</div>
+    <div class="sp">STUDIOCRAFT</div><div class="sp">MARKETPULSE</div><div class="sp">ADCRAFT CO.</div>
+  </div>
+  <p style="text-align:center;margin-top:1.8rem;color:var(--S);font-size:.82rem">Interested in sponsoring? <a href="#contact" style="color:var(--T);text-decoration:none">Contact us →</a></p>
+</section>
+<div class="div"></div> -->
+
+<!-- ══ 15. GALLERY ══ -->
+<section id="gallery" class="reveal">
+  <div class="sl">Highlights</div>
+  <h2 class="st">EVENT<br><span class="dim">GALLERY</span></h2>
+  <div class="gg">
+    <div class="gi">🏟</div><div class="gi">🎤</div><div class="gi">📊</div>
+    <div class="gi">🏆</div><div class="gi">👥</div><div class="gi">🎨</div>
+    <div class="gi">📸</div><div class="gi">🎬</div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 16. CONTACT ══ -->
+<section id="contact" class="reveal">
+  <div class="sl">Get In Touch</div>
+  <h2 class="st">CONTACT<br><span class="dim">US</span></h2>
+  <div class="cogrid">
+    <div class="colist">
+      <!-- <div class="ci"><div class="cii">👤</div><div><div class="cil">Coordinator</div><div class="civ">Prof. Meera Joshi</div></div></div> -->
+      <div class="ci"><div class="cii">📧</div><div><div class="cil">Email</div><div class="civ">blsmc.brandaid@gmail.com</div></div></div>
+      <div class="ci"><div class="cii">📞</div><div><div class="cil">Phone</div><div class="civ">+91 7014793900</div></div></div>
+      <div class="ci"><div class="cii">📸</div><div><div class="cil">YouTube</div><div class="civ">https://www.youtube.com/@brandaid.bls_bmc</div></div></div>
+      <div class="ci"><div class="cii">🏛</div><div><div class="cil">Venue</div><div class="civ">Visit us: Gazebo 4, DBS Global University</div></div></div>
+    </div>
+    <div class="msgbox">
+      <h3>Send a Message</h3>
+      <div style="display:flex;flex-direction:column;gap:.9rem">
+        <input class="inp" type="text" id="cn" placeholder="Your Name">
+        <input class="inp" type="email" id="ce" placeholder="Your Email">
+        <textarea class="inp" rows="4" placeholder="Your message..." style="resize:vertical" id="cm"></textarea>
+        <button class="btn bf" onclick="sendMsg()" style="justify-content:center">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 17. BLOG ══ -->
+<section id="blog" class="reveal">
+  <div class="sl">Learn &amp; Grow</div>
+  <h2 class="st">BRAND AID<br><span class="dim">BLOG</span></h2>
+  <div class="bg-grid">
+    <div class="bc"><div class="bimg">✍</div><div class="bb"><div class="btag">Strategy</div><div class="bttl">How to Create a Winning Advertisement in 30 Minutes</div><div class="bex">Time pressure is real in Brand Aid. Here are 5 frameworks top teams use to build killer ads fast...</div></div></div>
+    <div class="bc"><div class="bimg">📈</div><div class="bb"><div class="btag">Branding</div><div class="bttl">Top 5 Branding Strategies Every Student Must Know</div><div class="bex">From differentiation to emotional branding — these principles turn good ideas into great brands...</div></div></div>
+    <div class="bc"><div class="bimg">🔍</div><div class="bb"><div class="btag">Case Study</div><div class="bttl">Inside the Campaign: How Amul Stays Forever Relevant</div><div class="bex">A masterclass in consistency, cultural relevance, and humour — Amul's marketing is a textbook...</div></div></div>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 18. CONTENT WRITING ══ -->
+<section id="content-writing" class="reveal">
+  <div class="sl">Beyond Ads</div>
+  <h2 class="st">CONTENT<br><span class="dim">WRITING</span></h2>
+  <p class="sd">Brand Aid expands into marketing + content + creativity. Challenges for writers, copywriters, and storytellers.</p>
+  <div class="cwg">
+    <div class="cwc"><div class="cwi">📝</div><div class="cwt">Article Writing</div><div class="cwd">Write a compelling article on a given marketing topic. Judged on research, clarity, and originality.</div></div>
+    <div class="cwc"><div class="cwi">✏</div><div class="cwt">Copywriting Challenge</div><div class="cwd">Craft ad copy, headlines, and CTAs for a mystery product. Short, punchy, and persuasive.</div></div>
+    <div class="cwc"><div class="cwi">🏷</div><div class="cwt">Tagline Contest</div><div class="cwd">Submit the most memorable tagline for a brand. Creativity and recall factor are key.</div></div>
+    <div class="cwc"><div class="cwi">📖</div><div class="cwt">Story-Based Branding</div><div class="cwd">Tell a brand's story through narrative writing. Engage emotions and build brand identity.</div></div>
+  </div>
+  <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+    <button class="btn bf" onclick="showToast('✍ Content Writing entries open on event day!')">Submit Your Entry</button>
+    <button class="btn bo" onclick="showToast('📋 Guidelines PDF coming soon!')">View Guidelines</button>
+  </div>
+</section>
+<div class="div"></div>
+
+<!-- ══ 19. TEAM FINDER ══ -->
+<!-- <section id="teamfinder" class="reveal">
+  <div class="sl">Companionship</div>
+  <h2 class="st">FIND YOUR<br><span class="dim">TEAM PARTNER</span></h2>
+  <p class="sd">Discover creators looking for teammates. Filter by skill and send a collaboration request.</p>
+  <div class="fing">
+    <div class="finc"><div class="finav">👨‍💻</div><div class="finn">Aryan Mehta</div><div class="fintags"><span class="fintag">Graphic Design</span><span class="fintag">Canva</span></div><button class="finbtn" onclick="showToast('✉ Request sent to Aryan!')">+ Connect</button></div>
+    <div class="finc"><div class="finav">👩‍🎨</div><div class="finn">Priya Sharma</div><div class="fintags"><span class="fintag">Copywriting</span><span class="fintag">Strategy</span></div><button class="finbtn" onclick="showToast('✉ Request sent to Priya!')">+ Connect</button></div>
+    <div class="finc"><div class="finav">🧑‍💼</div><div class="finn">Rahul Verma</div><div class="fintags"><span class="fintag">Presenter</span><span class="fintag">Strategist</span></div><button class="finbtn" onclick="showToast('✉ Request sent to Rahul!')">+ Connect</button></div>
+    <div class="finc"><div class="finav">👩‍💻</div><div class="finn">Sneha Nair</div><div class="fintags"><span class="fintag">Content Writer</span><span class="fintag">SEO</span></div><button class="finbtn" onclick="showToast('✉ Request sent to Sneha!')">+ Connect</button></div>
+    <div class="finc"><div class="finav">👨‍🎤</div><div class="finn">Dev Krishnan</div><div class="fintags"><span class="fintag">Video Editing</span><span class="fintag">Design</span></div><button class="finbtn" onclick="showToast('✉ Request sent to Dev!')">+ Connect</button></div>
+  </div>
+</section> -->
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="flogo">BRAND<span>AID</span></div>
+  <div class="fsub">The Ultimate Marketing Championship · DBS College · Dehradun</div>
+  <div class="flinks">
+    <a href="#about">About</a><a href="#rounds">Structure</a><a href="#prizes">Prizes</a>
+    <a href="#register">Register</a><a href="#submit">Submit Ad</a><a href="#leaderboard">Leaderboard</a>
+    <a href="#voting">Vote</a><a href="#ai-tool">AI Agent</a><a href="#blog">Blog</a>
+    <a href="#content-writing">Content Writing</a><a href="#teamfinder">Team Finder</a>
+    <a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </div>
+  <div class="fcopy">© 2025 Brand Aid · All Rights Reserved · Made with ❤ for DBS College</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
